@@ -7,12 +7,12 @@
 <meta name="description" content="Semi private training in Bsalim, max 3 clients per coach, led by a team of trainers and a physiotherapist. Your first session is free.">
 <meta property="og:title" content="Your first session is free | Wellbe Health Center">
 <meta property="og:description" content="Semi private training, max 3 clients per coach. Bsalim.">
-<meta property="og:image" content="img/hero.webp">
+<meta property="og:image" content="img/center.jpg">
 <link rel="icon" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero.webp">
+<link rel="preload" as="image" href="img/center.webp">
 <style>
 /* Layout: photo-led hero, one decision per screen. The form is a full-screen
    step flow (one question per screen) that slides over the page. */
@@ -259,6 +259,33 @@ input:focus{border-color:var(--mint-deep);box-shadow:0 0 0 4px var(--mint-soft);
 }
 .sheet{display:flex;flex-direction:column;height:100%;width:100%;background:var(--card)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ONE SCREEN: photo, headline, offer, button. No scrolling: the button opens the booking flow. */
+html,body{height:100%;overflow:hidden;overscroll-behavior:none}
+body{display:flex;flex-direction:column;height:100dvh}
+.top{flex:none}
+main.one{flex:1;min-height:0;display:flex}
+.hero1{position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#20282b}
+.hero1 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:76% 35%}
+.hero1 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,27,30,.05) 0%,rgba(21,27,30,.25) 35%,rgba(21,27,30,.82) 62%,rgba(21,27,30,.95) 100%)}
+.hero1 .content{position:relative;z-index:1;color:#fff;padding:0 20px max(18px,env(safe-area-inset-bottom));max-width:620px;width:100%;margin:0 auto}
+.eyebrow1{display:inline-block;align-self:flex-start;background:var(--mint);color:var(--ink);font:700 12.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:8px 11px;border-radius:8px;margin-bottom:12px}
+.hero1 h1{font-size:clamp(46px,13vw,92px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:.95}
+.hero1 h1 .again{display:inline-block;color:var(--ink);background:var(--mint);font-weight:900;font-size:1.12em;line-height:.9;padding:.04em .16em .02em .1em;margin-top:.06em;transform:skewX(-6deg)}
+.hero1 .lede{margin-top:10px;font-size:16.5px;line-height:1.4;color:#e9efed;max-width:34ch}
+.offer1{margin-top:12px;font-size:15.5px;line-height:1.35;color:#fff;background:rgba(163,38,63,.92);border-radius:12px;padding:10px 12px}
+.offer1 b{font-weight:800}
+.hero1 .btn{margin-top:14px;min-height:60px;font-size:20px}
+.reassure1{display:flex;justify-content:space-between;gap:6px;margin-top:10px;font-size:13.5px;font-weight:600;color:#dfe8e5}
+.reassure1 span{display:flex;align-items:center;gap:5px}
+.reassure1 svg{width:16px;height:16px;color:var(--mint)}
+@media (max-height:640px){.hero1 .lede{display:none}.hero1 h1{font-size:clamp(40px,11vw,70px)}}
+@media (min-width:860px){
+  .hero1{flex-direction:row;align-items:stretch;justify-content:stretch}
+  .hero1 .bg{position:relative;width:58%;height:100%;inset:auto}
+  .hero1 .shade{display:none}
+  .hero1 .content{width:42%;max-width:none;margin:0;display:flex;flex-direction:column;justify-content:center;padding:40px 48px;background:var(--ink)}
+}
 </style>
 </head>
 <body>
@@ -284,97 +311,24 @@ input:focus{border-color:var(--mint-deep);box-shadow:0 0 0 4px var(--mint-soft);
   </div>
 </header>
 
-<main>
-  <section class="hero">
-    <div class="media">
-      <img src="img/hero.webp" alt="A client training at Wellbe Health Center" width="900" height="1600">
-      <div class="over"><div class="wrap">
-        <h1>Get strong <span class="again">again.</span></h1>
-        <p class="lede">Semi private training in Bsalim, led by a team of trainers &amp; a physiotherapist.</p>
-        <button class="btn" type="button" data-open id="heroCta">Book my free session <svg class="icon"><use href="#i-arrow"/></svg></button>
-      </div></div>
-    </div>
-    <div class="hero-card"><div class="wrap">
-      <div class="offer">
-        <div class="big">Your first session is <b>free</b></div>
-        <p>Ask about our October Special packages and save up to $60.</p>
-        <span class="tag"><i></i>Limited time offer</span>
-      </div>
-      <button class="btn desk" type="button" data-open>Book my free session <svg class="icon"><use href="#i-arrow"/></svg></button>
-      <div class="reassure">
-        <span><svg><use href="#i-check"/></svg>Takes 60 seconds</span>
+<main class="one">
+  <section class="hero1">
+    <img class="bg" src="img/center.webp" alt="Inside Wellbe Health Center in Bsalim" width="1080" height="977" fetchpriority="high">
+    <div class="shade"></div>
+    <div class="content">
+      <span class="eyebrow1">Women 40+ · Morning sessions · Bsalim</span>
+      <h1>Get strong <span class="again">again.</span></h1>
+      <p class="lede">Semi private training, max 3 per session, led by trainers &amp; a physiotherapist.</p>
+      <div class="offer1"><b>Your first session is free.</b> Ask about our October Special and save up to $60.</div>
+      <button class="btn" type="button" data-open id="heroCta">Book my free session <svg class="icon"><use href="#i-arrow"/></svg></button>
+      <div class="reassure1">
+        <span><svg><use href="#i-check"/></svg>60 seconds</span>
         <span><svg><use href="#i-check"/></svg>No commitment</span>
-        <span><svg><use href="#i-check"/></svg>No payment needed</span>
-      </div>
-    </div></div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <h2>Sound familiar?</h2>
-      <ul class="checks">
-        <li><svg><use href="#i-alert"/></svg>Something started to hurt, you stopped, and nobody told you what was safe to do.</li>
-        <li><svg><use href="#i-alert"/></svg>Big gyms feel like they were built for 25 year olds.</li>
-        <li><svg><use href="#i-alert"/></svg>You tried classes where nobody checked your form once.</li>
-        <li><svg><use href="#i-alert"/></svg>You know you need strength now, for your back, knees and bones, but don't know where to start.</li>
-      </ul>
-      <p class="turn">Our morning sessions are built <span>for exactly this.</span></p>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <h2>How semi private works</h2>
-      <p class="lead">Not a class, and not expensive one on one. The middle ground that gets results.</p>
-      <div class="feature">
-        <article class="fcard"><img src="img/group.webp" alt="A coach guiding a client while others train" loading="lazy" width="900" height="1600">
-          <div class="t"><h3>Max 3 clients</h3><p>Your coach sees every rep and corrects you on the spot.</p></div></article>
-        <article class="fcard"><img src="img/coach.webp" alt="A coach adjusting a stretch" loading="lazy" width="900" height="1600">
-          <div class="t"><h3>Your own program</h3><p>Same hour, different plans. Yours fits your goals and anything that hurts.</p></div></article>
-        <article class="fcard"><img src="img/rehab.webp" alt="Band mobility work with a coach" loading="lazy" width="900" height="1600">
-          <div class="t"><h3>Trainers + physio</h3><p>A team of trainers and a physiotherapist. Old knee, back or shoulder injury? We plan around it.</p></div></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <h2>Your free trial</h2>
-      <div class="steps">
-        <div class="step"><span class="n">1</span><div><b>Answer 4 quick questions</b><span>So your coach knows your history before you walk in.</span></div></div>
-        <div class="step"><span class="n">2</span><div><b>Pick your time</b><span>7, 8, 9 or 10 AM. Bring a friend to the same session if you like.</span></div></div>
-        <div class="step"><span class="n">3</span><div><b>Come in and train</b><span>We reach out on WhatsApp within 24 hours. You train, then decide.</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block faq">
-    <div class="wrap">
-      <h2>Questions</h2>
-      <details><summary>I haven't trained in years. Is that a problem?<svg><use href="#i-plus"/></svg></summary><p>No. Most people who start with us in the mornings are coming back after a long break. Your first session starts where you are today.</p></details>
-      <details><summary>I have an old injury. Can I still train?<svg><use href="#i-plus"/></svg></summary><p>Usually yes, and that's where we're different. Wellbe is a physiotherapy center, so your program is built around the injury. Tell us about it in the form.</p></details>
-      <details><summary>Who will I train with?<svg><use href="#i-plus"/></svg></summary><p>Your coach and up to two other clients, each on their own program. Want to train with a friend? After booking you get a link to invite her to the same session.</p></details>
-      <details><summary>What happens after the free session?<svg><use href="#i-plus"/></svg></summary><p>You decide. Ask about our October Special packages and save up to $60.</p></details>
-      <details><summary>Where are you?<svg><use href="#i-plus"/></svg></summary><p>Wellbe Health Center, Bsalim. <a href="https://www.google.com/maps/search/?api=1&amp;query=Wellbe+Health+Center+Bsalim" target="_blank" rel="noopener">Find us on Google Maps</a></p></details>
-
-      <div class="final">
-        <h2>Your first session is free</h2>
-        <p>3 clients max per session. Spots fill first come, first served.</p>
-        <button class="btn" type="button" data-open>Book my free session <svg class="icon"><use href="#i-arrow"/></svg></button>
+        <span><svg><use href="#i-check"/></svg>No payment</span>
       </div>
     </div>
   </section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <img src="img/logo.png" alt="Wellbe Health Center" loading="lazy" width="190" height="80">
-    <p>Wellbe Health Center · Bsalim</p>
-    <p>Questions? <a href="https://wa.me/96176511048" target="_blank" rel="noopener">WhatsApp +961 76 511 048</a></p>
-  </div>
-</footer>
-
-<div class="sticky hide" id="sticky"><button class="btn" type="button" data-open>Book my free session <svg class="icon"><use href="#i-arrow"/></svg></button></div>
 
 <!-- ================= FLOW ================= -->
 <div class="flow" id="flow" role="dialog" aria-modal="true" aria-labelledby="flowTitle">
@@ -511,10 +465,7 @@ var CONFIG = {
   // invite link from a friend: ?d=2026-10-14&h=7&by=Rita
   var invite = (/^\d{4}-\d{2}-\d{2}$/.test(qs.get('d')||'') && /^(7|8|9|10)$/.test(qs.get('h')||'')) ? {date:qs.get('d'),hour:+qs.get('h'),by:(qs.get('by')||'your friend').slice(0,30)} : null;
 
-  /* sticky CTA: visible once the hero button scrolls away, hidden near the final CTA */
-  var sticky=$('#sticky'), heroBtn=$('#heroCta'), finalBox=$('.final');
-  function stickyCheck(){var a=heroBtn.getBoundingClientRect(), f=finalBox.getBoundingClientRect(); sticky.classList.toggle('hide', a.bottom>0 || f.top<innerHeight)}
-  addEventListener('scroll',stickyCheck,{passive:true}); stickyCheck();
+
 
   /* ---------- API ---------- */
   function apiGet(){ if(!CONFIG.API_URL) return demoSlots(); return fetch(CONFIG.API_URL+'?action=slots&t='+Date.now()).then(function(r){return r.json()}) }
