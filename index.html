@@ -270,16 +270,16 @@ main.one{flex:1;min-height:0;display:flex}
 .hero1 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,27,30,.05) 0%,rgba(21,27,30,.25) 35%,rgba(21,27,30,.82) 62%,rgba(21,27,30,.95) 100%)}
 .hero1 .content{position:relative;z-index:1;color:#fff;padding:0 20px max(18px,env(safe-area-inset-bottom));max-width:620px;width:100%;margin:0 auto}
 .eyebrow1{display:inline-block;align-self:flex-start;background:var(--mint);color:var(--ink);font:700 12.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:8px 11px;border-radius:8px;margin-bottom:12px}
-.hero1 h1{font-size:clamp(46px,13vw,92px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:.95}
+.hero1 h1{font-size:clamp(44px,12vw,84px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:.95}
 .hero1 h1 .again{display:inline-block;color:var(--ink);background:var(--mint);font-weight:900;font-size:1.12em;line-height:.9;padding:.04em .16em .02em .1em;margin-top:.06em;transform:skewX(-6deg)}
-.hero1 .lede{margin-top:10px;font-size:16.5px;line-height:1.4;color:#e9efed;max-width:34ch}
+.hero1 .lede{margin-top:12px;font-size:19px;line-height:1.35;color:#fff;font-weight:600}
 .offer1{margin-top:12px;font-size:15.5px;line-height:1.35;color:#fff;background:rgba(163,38,63,.92);border-radius:12px;padding:10px 12px}
 .offer1 b{font-weight:800}
 .hero1 .btn{margin-top:14px;min-height:60px;font-size:20px}
 .reassure1{display:flex;justify-content:space-between;gap:6px;margin-top:10px;font-size:13.5px;font-weight:600;color:#dfe8e5}
 .reassure1 span{display:flex;align-items:center;gap:5px}
 .reassure1 svg{width:16px;height:16px;color:var(--mint)}
-@media (max-height:640px){.hero1 .lede{display:none}.hero1 h1{font-size:clamp(40px,11vw,70px)}}
+@media (max-height:640px){.hero1 h1{font-size:clamp(40px,11vw,70px)}}
 @media (min-width:860px){
   .hero1{flex-direction:row;align-items:stretch;justify-content:stretch}
   .hero1 .bg{position:relative;width:58%;height:100%;inset:auto}
@@ -316,15 +316,9 @@ main.one{flex:1;min-height:0;display:flex}
     <img class="bg" src="img/center.webp" alt="Inside Wellbe Health Center in Bsalim" width="1080" height="977" fetchpriority="high">
     <div class="shade"></div>
     <div class="content">
-      <span class="eyebrow1">Women 40+ · Morning sessions · Bsalim</span>
-      <h1>Get strong <span class="again">again.</span></h1>
-      <p class="lede">Semi private training, max 3 per session, led by trainers &amp; a physiotherapist.</p>
-      <div class="offer1"><b>Your first session is free.</b> Ask about our October Special and save up to $60.</div>
-      <button class="btn" type="button" data-open id="heroCta">Book my free session <svg class="icon"><use href="#i-arrow"/></svg></button>
-      <div class="reassure1">
-        <span><svg><use href="#i-check"/></svg>60 seconds</span>
-        <span><svg><use href="#i-check"/></svg>No payment</span>
-      </div>
+      <h1>Your first session is <span class="again">free.</span></h1>
+      <p class="lede">Fill the form. It takes 60 seconds.</p>
+      <button class="btn" type="button" data-open id="heroCta">Fill the form <svg class="icon"><use href="#i-arrow"/></svg></button>
     </div>
   </section>
 </main>
@@ -338,7 +332,7 @@ main.one{flex:1;min-height:0;display:flex}
       <div class="prog" aria-hidden="true"><i id="progBar"></i></div>
       <button class="iconbtn" id="closeBtn" type="button" aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button>
     </div>
-    <div class="fstep" id="stepLabel">Step 1 of 6</div>
+    <div class="fstep" id="stepLabel">Step 1 of 5</div>
   </div>
 
   <div class="fbody" id="fbody"><div class="inner">
@@ -346,8 +340,8 @@ main.one{flex:1;min-height:0;display:flex}
 
     <!-- 0 contact -->
     <div class="pane" data-step="0">
-      <h2 id="flowTitle">Let's book your free session</h2>
-      <p class="help">First, how do we reach you?</p>
+      <h2 id="flowTitle">Where do we send your confirmation?</h2>
+      <p class="help" id="contactHelp">Your spot is confirmed on WhatsApp. Takes 60 seconds.</p>
       <div class="field" id="fName">
         <label for="name">Your name</label>
         <input type="text" id="name" autocomplete="name" autocapitalize="words" enterkeyhint="next">
@@ -355,11 +349,11 @@ main.one{flex:1;min-height:0;display:flex}
       </div>
       <div class="field" id="fPhone">
         <label for="phone">Phone number <small>(WhatsApp)</small></label>
-        <input type="tel" id="phone" autocomplete="tel" inputmode="tel" placeholder="03 123 456" enterkeyhint="next">
+        <input type="tel" id="phone" autocomplete="tel" inputmode="tel" placeholder="03 123 456" enterkeyhint="done">
         <span class="ferr">Please check your phone number.</span>
       </div>
       <div class="field" id="fEmail">
-        <label for="email">Email</label>
+        <label for="email">Email <small>(optional)</small></label>
         <input type="email" id="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="name@example.com" enterkeyhint="done">
         <span class="ferr">Please check your email.</span>
       </div>
@@ -368,7 +362,7 @@ main.one{flex:1;min-height:0;display:flex}
     <!-- 1 trained -->
     <div class="pane" data-step="1">
       <h2>Have you trained before?</h2>
-      <p class="help">Pick one.</p>
+      <p class="help">Tap one.</p>
       <div class="opts" data-q="trained" data-single>
         <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>No, this is my first time</button>
         <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Yes, but I stopped</button>
@@ -376,40 +370,21 @@ main.one{flex:1;min-height:0;display:flex}
       </div>
     </div>
 
-    <!-- 2 stopped -->
+    <!-- 2 goal -->
     <div class="pane" data-step="2">
-      <h2>What stopped you?</h2>
-      <p class="help">From starting, or made you stop. Pick all that apply.</p>
-      <div class="opts" data-q="stopped">
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>No time</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Pain or an injury</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Didn't see results</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Gyms made me uncomfortable</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Lost motivation</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Kids and family</button>
-        <button type="button" class="opt" aria-pressed="false" data-other><span class="box"><svg><use href="#i-check"/></svg></span>Something else</button>
+      <h2>What do you want most?</h2>
+      <p class="help">Tap one.</p>
+      <div class="opts" data-q="why" data-single>
+        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Feel strong again</button>
+        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Less back or knee pain</button>
+        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Lose weight</button>
+        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>More energy</button>
+        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Stronger bones and joints</button>
       </div>
-      <div class="other field"><label for="stoppedOther" class="sr">Tell us more</label><input type="text" id="stoppedOther" placeholder="Tell us in a few words"></div>
     </div>
 
-    <!-- 3 why -->
+    <!-- 3 injuries -->
     <div class="pane" data-step="3">
-      <h2>Why start now?</h2>
-      <p class="help">Pick all that apply.</p>
-      <div class="opts" data-q="why">
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>More energy</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Stronger bones and joints</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Less back or knee pain</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Lose weight</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Feel like myself again</button>
-        <button type="button" class="opt" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>My doctor recommended it</button>
-        <button type="button" class="opt" aria-pressed="false" data-other><span class="box"><svg><use href="#i-check"/></svg></span>Something else</button>
-      </div>
-      <div class="other field"><label for="whyOther" class="sr">Tell us more</label><input type="text" id="whyOther" placeholder="Tell us in a few words"></div>
-    </div>
-
-    <!-- 4 injuries -->
-    <div class="pane" data-step="4">
       <h2>Any injuries or pain?</h2>
       <p class="help">Your coach plans around it. Nothing is too small to mention.</p>
       <div class="opts" data-q="injuries" data-single>
@@ -419,22 +394,17 @@ main.one{flex:1;min-height:0;display:flex}
       <div class="other field"><label for="injuriesOther">Where?</label><input type="text" id="injuriesOther" placeholder="e.g. lower back, left knee, shoulder"></div>
     </div>
 
-    <!-- 5 booking -->
-    <div class="pane" data-step="5">
+    <!-- 4 booking -->
+    <div class="pane" data-step="4">
       <h2 id="bookTitle">Pick your morning</h2>
       <p class="help">60 minute session, max 3 clients with your coach. Pick a day, then a time.</p>
       <div class="friendnote" id="friendNote" hidden></div>
       <div id="slotArea"><div class="loading"><div class="spin"></div>Checking open spots…</div></div>
-      <div class="explain">
-        <div><span class="badge inst"><svg><use href="#i-bolt"/></svg>Book instantly</span><span>A session is already running. Your spot is reserved right away.</span></div>
-        <div><span class="badge req"><svg><use href="#i-clock"/></svg>Request to book</span><span>We open this session for you and confirm on WhatsApp within 24 hours.</span></div>
-        <div><svg class="icon" style="width:20px;height:20px;color:var(--mint-deep)"><use href="#i-users"/></svg><span>Training with a friend? Book first. You'll get a link so she joins the same session.</span></div>
-      </div>
-      <div style="text-align:center;margin-top:8px"><button type="button" class="linkbtn" id="skipBtn">None of these work? Call me instead</button></div>
+      <div style="text-align:center;margin-top:8px"><button type="button" class="linkbtn" id="skipBtn">None of these work? Message me instead</button></div>
     </div>
 
     <!-- 6 done -->
-    <div class="pane" data-step="6"><div id="doneArea"></div></div>
+    <div class="pane" data-step="5"><div id="doneArea"></div></div>
   </div></div>
 
   <div class="ffoot" id="ffoot"><div class="inner">
@@ -448,7 +418,7 @@ main.one{flex:1;min-height:0;display:flex}
 /* ================== CONFIG ================== */
 var CONFIG = {
   API_URL: 'https://script.google.com/macros/s/AKfycbxrCVPkY-h2xqTqeHhhaChdaSAf1KbEsJ_HbRSP-oyg4r-qgF-sgSJtFZ0D0uyhDiOS/exec',
-  PIXEL_ID: '1458018466274647', // Meta Pixel: PageView, Lead (after screen 1), Schedule (after booking)
+  PIXEL_ID: '1458018466274647', // Meta Pixel: PageView, OpenForm + FormStep (custom), Lead (name + phone sent), Schedule (booked)
   CAP: 3
 };
 /* ============================================ */
@@ -470,36 +440,42 @@ var CONFIG = {
   function apiGet(){ if(!CONFIG.API_URL) return demoSlots(); return fetch(CONFIG.API_URL+'?action=slots&t='+Date.now()).then(function(r){return r.json()}) }
   function apiPost(b){ if(!CONFIG.API_URL) return demoPost(b); return fetch(CONFIG.API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(b)}).then(function(r){return r.json()}) }
 
-  /* ---------- flow state ---------- */
-  var flow=$('#flow'), step=0, TOTAL=6, lead=store.get('w40lead'), data=null, curDay=null, sel=null;
+  /* ---------- flow state: name + phone, 3 taps, pick a time ---------- */
+  var flow=$('#flow'), step=0, TOTAL=5, lead=store.get('w40lead'), data=null, curDay=null, sel=null, mode='book';
   var nextBtn=$('#nextBtn'), backBtn=$('#backBtn'), err=$('#flowErr'), note=$('#footNote'), lastFocus=null;
+  function trackC(ev,p){try{if(window.fbq)fbq('trackCustom',ev,p||{})}catch(e){}}
 
   function openFlow(){
     lastFocus=document.activeElement; flow.classList.add('open'); document.body.style.overflow='hidden';
+    trackC('OpenForm');
     var done=store.get('w40done');
-    if(done){ show(6); renderDone(done) } else if(lead&&lead.answered){ show(5) } else if(lead){ show(1) } else show(0);
+    if(done){ show(5); renderDone(done) } else if(lead&&lead.id){ show(lead.answered?4:1) } else show(0);
   }
   function closeFlow(){ flow.classList.remove('open'); document.body.style.overflow=''; if(lastFocus) lastFocus.focus() }
   $$('[data-open]').forEach(function(b){ b.addEventListener('click',openFlow) });
   $('#closeBtn').addEventListener('click',closeFlow);
   addEventListener('keydown',function(e){ if(e.key==='Escape'&&flow.classList.contains('open')) closeFlow() });
 
+  var seen={};
   function show(n){
     step=n; err.classList.remove('show');
     $$('.pane').forEach(function(p){p.classList.toggle('on',+p.dataset.step===n)});
     $('#progBar').style.width=(Math.min(n+1,TOTAL)/TOTAL*100)+'%';
     $('#stepLabel').textContent= n<TOTAL ? 'Step '+(n+1)+' of '+TOTAL : 'All done';
-    backBtn.hidden = (n===0 || n===6 || (n===1 && lead && lead.locked));
-    $('#ffoot').hidden = (n===6);
+    backBtn.hidden = (n===0 || n===1 || n===5);
+    $('#ffoot').hidden = (n===5);
     $('#fbody').scrollTop=0; note.textContent='';
-    if(n===0){ nextBtn.disabled=false; nextBtn.textContent='Continue'; setTimeout(function(){ if(!$('#name').value) $('#name').focus() },320) }
-    if(n>=1&&n<=4) refreshNext();
-    if(n===5){ $('#bookTitle').textContent=(lead&&lead.first? lead.first+', pick':'Pick')+' your time'; sel=null; updateBookBtn(); loadSlots() }
+    if(n<5&&!seen[n]){seen[n]=1;trackC('FormStep',{step:n+1})}
+    if(n>=1&&n<=3) refreshNext();
+    if(n===4){ $('#bookTitle').textContent='Pick your time'; updateBookBtn(); if(!data) loadSlots(); else renderSlots() }
+    if(n===0){ nextBtn.disabled=false; nextBtn.textContent='Continue';
+      note.textContent='Free. No payment needed.';
+      setTimeout(function(){ if(!$('#name').value) $('#name').focus() },320) }
   }
-  backBtn.addEventListener('click',function(){ if(step>0) show(step-1) });
+  backBtn.addEventListener('click',function(){ if(step>1) show(step-1) });
 
   /* ---------- options ---------- */
-  var Q={1:'trained',2:'stopped',3:'why',4:'injuries'};
+  var Q={1:'trained',2:'why',3:'injuries'};
   $$('.opts').forEach(function(g){
     var single=g.hasAttribute('data-single');
     g.addEventListener('click',function(e){
@@ -509,16 +485,16 @@ var CONFIG = {
       var other=$('[data-other]',g), box=g.parentNode.querySelector('.other'), otherOn=other&&other.getAttribute('aria-pressed')==='true';
       if(box){ box.classList.toggle('show',otherOn); if(otherOn&&o===other) setTimeout(function(){box.querySelector('input').focus()},50) }
       refreshNext();
-      if(single && !otherOn) setTimeout(goNext,260); // single choice: move on automatically
+      if(single && !otherOn) setTimeout(goNext,240); // single choice: move on automatically
     });
   });
   function picked(q){ return $$('.opts[data-q="'+q+'"] .opt[aria-pressed=true]').map(function(o){return o.textContent.trim()}) }
   function answer(q,id){ var o=$('#'+id)?$('#'+id).value.trim():''; return picked(q).map(function(v){return (v==='Something else'||v==='Yes')&&o? v+': '+o : v}).join(', ') }
   function refreshNext(){
-    if(step<1||step>4) return;
-    var ok=picked(Q[step]).length>0;
-    nextBtn.disabled=!ok; nextBtn.textContent= step===4 ? 'Continue to booking' : 'Continue';
-    note.textContent = ok ? '' : (step===2||step===3 ? 'Pick at least one' : 'Pick one');
+    if(step<1||step>3) return;
+    var ok=picked(Q[step]).length>0, yes=step===3&&picked('injuries').join('')==='Yes';
+    nextBtn.disabled=!ok; nextBtn.textContent='Continue'; note.textContent='';
+    $('#ffoot').hidden = !yes;   // single taps move on by themselves: no dead button
   }
 
   /* ---------- next ---------- */
@@ -526,36 +502,34 @@ var CONFIG = {
   function fail(msg){ err.textContent=msg; err.classList.add('show'); $('#fbody').scrollTop=0 }
   nextBtn.addEventListener('click',goNext);
   $('#name').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); $('#phone').focus() } });
-  $('#phone').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); $('#email').focus() } });
+  $('#phone').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); goNext() } });
   $('#email').addEventListener('keydown',function(e){ if(e.key==='Enter') goNext() });
 
   function goNext(){
     if(step===0) return submitContact();
-    if(step>=1&&step<=3){ if(picked(Q[step]).length) show(step+1); return }
-    if(step===4) return submitAnswers();
-    if(step===5) return submitBooking();
+    if(step>=1&&step<=3){ if(!picked(Q[step]).length) return; if(step===3) saveAnswers(); return show(step+1) }
+    if(step===4){ if(sel) submitBooking() }
   }
 
+  // answers saved onto the lead row (contact comes first, so a drop off is still a lead)
+  function saveAnswers(){
+    if(!lead||!lead.id) return;
+    lead.answered=true; store.set('w40lead',lead);
+    apiPost({action:'answers',leadId:lead.id,trained:picked('trained').join(', '),stopped:'',why:picked('why').join(', '),injuries:answer('injuries','injuriesOther')}).catch(function(){});
+  }
+  // contact first: creates the lead, then the questions, then the time
   function submitContact(){
     var name=$('#name').value.trim(), phone=$('#phone').value.trim(), email=$('#email').value.trim();
-    var okName=name.length>=2, okPhone=phone.replace(/\D/g,'').length>=7, okEmail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    var okName=name.length>=2, okPhone=phone.replace(/\D/g,'').length>=7, okEmail=!email||/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
     $('#fName').classList.toggle('bad',!okName); $('#fPhone').classList.toggle('bad',!okPhone); $('#fEmail').classList.toggle('bad',!okEmail);
     if(!okName||!okPhone||!okEmail){ ( !okName?$('#name'):!okPhone?$('#phone'):$('#email') ).focus(); return }
     busy(true,'Saving…');
     apiPost({action:'lead',name:name,phone:phone,email:email,source:source}).then(function(res){
       if(!res.ok) throw new Error(res.error||'Something went wrong');
-      lead={id:res.leadId,first:name.split(' ')[0],locked:true}; store.set('w40lead',lead); track('Lead');
-      if(res.booked){ var o={type:/instant|join/i.test(res.type||'')?'Instant':'Request',date:res.date,label:res.time,already:true}; store.set('w40done',o); show(6); return renderDone(o) }
+      lead={id:res.leadId,first:name.split(' ')[0],locked:true,answered:false}; store.set('w40lead',lead); track('Lead');
+      if(res.booked){ var o={type:'Instant',date:res.date,label:res.time,already:true}; store.set('w40done',o); show(5); return renderDone(o) }
       show(1);
-    }).catch(function(e){ fail(e.message&&e.message.length<160?e.message:'Connection problem. Please try again.') })
-      .then(function(){ if(step===0) busy(false,'Continue') });
-  }
-
-  function submitAnswers(){
-    busy(true,'Saving…');
-    apiPost({action:'answers',leadId:lead&&lead.id,trained:picked('trained').join(', '),stopped:answer('stopped','stoppedOther'),why:answer('why','whyOther'),injuries:answer('injuries','injuriesOther')})
-    .then(function(res){ if(!res.ok) throw new Error(res.error); lead.answered=true; store.set('w40lead',lead); show(5) })
-    .catch(function(){ fail('Connection problem. Please try again.'); busy(false,'Continue to booking') });
+    }).catch(function(e){ fail(e.message&&e.message.length<160?e.message:'Connection problem. Please try again.'); busy(false,'Try again') });
   }
 
   /* ---------- booking ---------- */
@@ -588,9 +562,7 @@ var CONFIG = {
     var day=data.filter(function(d){return d.date===curDay})[0];
     var list='<div class="slots">'+day.slots.map(function(s){
       var on=sel&&sel.date===day.date&&sel.hour===s.hour, full=s.type==='full';
-      var badge = full ? '<span class="badge full">Full</span>'
-        : s.type==='instant' ? '<span class="badge inst"><svg><use href="#i-bolt"/></svg>Book instantly</span>'
-        : '<span class="badge req"><svg><use href="#i-clock"/></svg>Request to book</span>';
+      var badge = full ? '<span class="badge full">Full</span>' : '';
       return '<button type="button" class="slot" data-h="'+s.hour+'" aria-pressed="'+on+'" '+(full?'disabled':'')+'><span class="t">'+hl(s.hour)+'</span>'+badge+'</button>'
     }).join('')+'</div>';
     $('#slotArea').innerHTML=tabs+list;
@@ -601,21 +573,20 @@ var CONFIG = {
     var sl=findSlot(curDay,+b.dataset.h); sel={date:curDay,hour:+b.dataset.h,type:sl.type}; renderSlots(); updateBookBtn();
   });
   function updateBookBtn(){
-    if(step!==5) return;
+    if(step!==4) return;
     if(!sel){ nextBtn.disabled=true; nextBtn.textContent='Choose a time'; note.textContent=''; return }
-    var inst=sel.type==='instant';
-    nextBtn.disabled=false; nextBtn.textContent=(inst?'Book ':'Request ')+fmt(sel.date).short+', '+hl(sel.hour);
-    note.textContent= inst ? 'Reserved right away. Free, no payment needed.' : 'We confirm on WhatsApp within 24 hours. Free, no payment needed.';
+    nextBtn.disabled=false; nextBtn.textContent=lead&&lead.id?'Book '+fmt(sel.date).short+', '+hl(sel.hour):'Continue';
+    note.textContent='';
   }
   function submitBooking(){
     if(!sel||!lead) return;
     busy(true,'Booking…');
     apiPost({action:'book',leadId:lead.id,date:sel.date,hour:sel.hour}).then(function(res){
-      if(!res.ok){ fail(res.error||'That time just filled up. Please pick another.'); if(!res.already){ sel=null; loadSlots() } else busy(false); return }
-      track('Schedule'); var o={type:res.type==='Instant'?'Instant':'Request',date:res.date,hour:res.hour}; store.set('w40done',o); show(6); renderDone(o);
-    }).catch(function(){ fail('Connection problem. Please try again.'); updateBookBtn() });
+      if(!res.ok){ if(step!==4) show(4); fail(res.error||'That time just filled up. Please pick another.'); if(!res.already){ sel=null; data=null; loadSlots() } else busy(false); return }
+      track('Schedule'); var o={type:'Instant',date:res.date,hour:res.hour}; store.set('w40done',o); show(5); renderDone(o);
+    }).catch(function(){ if(step!==4) show(4); fail('Connection problem. Please try again.'); updateBookBtn() });
   }
-  $('#skipBtn').addEventListener('click',function(){ var o={type:'Callback'}; store.set('w40done',o); show(6); renderDone(o) });
+  $('#skipBtn').addEventListener('click',function(){ if(lead&&lead.id){ var o={type:'Callback'}; store.set('w40done',o); show(5); return renderDone(o) } mode='callback'; sel=null; show(0) });
 
   /* ---------- done ---------- */
   var TOWELS='<div class="towels" role="img" aria-label="A small 15 by 15 centimetre towel is too small. Bring a towel of at least 30 by 50 centimetres.">'+
@@ -682,12 +653,12 @@ var CONFIG = {
     for(var i=1;days.length<5;i++){ var d=new Date(t.getTime()+i*864e5), w=d.getDay(); if(w===0||w===6) continue;
       var ymd=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2), k=days.length;
       var pat=[[1,0,3,0],[0,2,0,0],[2,0,0,1],[0,0,0,0],[3,1,0,0]][k];
-      days.push({date:ymd,slots:[7,8,9,10].map(function(h,j){return {hour:h,type:pat[j]>=3?'full':(pat[j]>0?'instant':'request')}})}) }
+      days.push({date:ymd,slots:[7,8,9,10].map(function(h,j){return {hour:h,type:pat[j]>=3?'full':'instant'}})}) }
     res({ok:true,days:days,cap:3}) },450) }) }
   function demoPost(b){ return new Promise(function(res){ setTimeout(function(){
     if(b.action==='lead') res({ok:true,leadId:'DEMO-1',booked:false});
     else if(b.action==='answers') res({ok:true});
-    else res({ok:true,type:sel.type==='instant'?'Instant':'Request',date:b.date,hour:b.hour}) },500) }) }
+    else res({ok:true,type:'Instant',date:b.date,hour:b.hour}) },500) }) }
 })();
 </script>
 </body>
