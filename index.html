@@ -316,9 +316,9 @@ main.one{flex:1;min-height:0;display:flex}
     <img class="bg" src="img/center.webp" alt="Inside Wellbe Health Center in Bsalim" width="1080" height="977" fetchpriority="high">
     <div class="shade"></div>
     <div class="content">
-      <h1>Your first session is <span class="again">free.</span></h1>
-      <p class="lede">Fill the form. It takes 60 seconds.</p>
-      <button class="btn" type="button" data-open id="heroCta">Fill the form <svg class="icon"><use href="#i-arrow"/></svg></button>
+      <h1>Fill the <span class="again">form.</span></h1>
+      <p class="lede">Takes 60s to book now for free.</p>
+      <button class="btn" type="button" data-open id="heroCta">Let's Go <svg class="icon"><use href="#i-arrow"/></svg></button>
     </div>
   </section>
 </main>
@@ -469,7 +469,6 @@ var CONFIG = {
     if(n>=1&&n<=3) refreshNext();
     if(n===4){ $('#bookTitle').textContent='Pick your time'; updateBookBtn(); if(!data) loadSlots(); else renderSlots() }
     if(n===0){ nextBtn.disabled=false; nextBtn.textContent='Continue';
-      note.textContent='Free. No payment needed.';
       setTimeout(function(){ if(!$('#name').value) $('#name').focus() },320) }
   }
   backBtn.addEventListener('click',function(){ if(step>1) show(step-1) });
