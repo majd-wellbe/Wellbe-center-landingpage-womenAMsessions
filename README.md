@@ -1,12 +1,17 @@
 # Wellbe Free Trial (Women over 40)
 
-Landing page + 2 step form + morning booking. Static site on GitHub Pages, backend = Apps Script writing to the Operations sheet (tab `LEADS W40`).
+`index.html` is the current page. `index-v1.html` is the previous version, kept for comparison (see CHANGELOG.md).
+
+Landing page with the booking calendar on the page itself, then one short contact step (name + WhatsApp number, optional injury note and email). Static site on GitHub Pages, backend = Apps Script writing to the Operations sheet (tab `LEADS W40`).
 
 ## Booking rules (built in)
 - Mon to Fri, 7 / 8 / 9 / 10 AM, 60 min, next 7 days, slot must start 12+ hours from now.
 - Joe max 3 clients per hour = his clients in SESSIONS 1:1 + 1:2 + 1:3 at that hour + `Pending` rows in LEADS W40. Other trainers never count.
-- Joe already has a 1:3 with someone in it = **Book instantly**. Nobody yet = **Request to book** (team confirms on WhatsApp within 24h). Joe at 3 = **Full**. The page never shows spot counts.
-- One booking per phone number. Name, phone and email are saved after screen 1, before the questions.
+- Joe has room and no 1:1 / 1:2 client at that hour = **open** (booked as Instant, Status = Pending until Romy confirms). Joe at 3, or Joe has a 1:1 / 1:2 client at that hour = **Full**. The page never shows spot counts. (Checked against the live backend on 27 Oct 2026.)
+- Flow: pick a day and time on the page > name + WhatsApp number (+ optional injury, optional email) > booked. The page sends `lead` then `book` back to back, so the lead row exists even if the booking fails.
+- One booking per phone number (the backend matches an existing lead by phone and returns it).
+- "Trained before" and "What do you want most" are no longer asked; those columns stay empty for new leads. Injuries are saved through the `lead` call.
+- "None of these work?" saves name + number only (Status = No Booking) so Romy can find a time.
 - Invite a friend: the confirmation page gives a WhatsApp invite link (`?d=date&h=hour&by=name`). The friend fills the same form and lands on that session preselected. Her Source column shows `by=Name`.
 
 ## Romy's workflow in LEADS W40
@@ -40,7 +45,7 @@ Never add W40 leads to SESSIONS 1:3 by hand. If she cancels after confirming, ma
 Any later change to Code.gs: Deploy > Manage deployments > Edit > Version: New version (keeps the same URL).
 
 ## Meta Pixel
-When you have one, paste the ID in `PIXEL_ID: ''`. Events: `PageView`, `Lead` (form submitted), `Schedule` (time booked). Optimize the campaign for `Schedule` once you have 50 a week, `Lead` before that.
+When you have one, paste the ID in `PIXEL_ID: ''`. Events: `PageView`, `OpenForm` + `FormStep` (custom: step 1 = time picked, step 2 = contact sheet opened), `Lead` (name + phone sent, now after a time is picked), `Schedule` (time booked). Optimize the campaign for `Schedule` once you have 50 a week, `Lead` before that.
 
 ## Demo mode
 With `API_URL` empty the page runs on fake slots so you can click through it. Nothing is saved.

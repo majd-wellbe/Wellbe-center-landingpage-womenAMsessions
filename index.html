@@ -3,300 +3,231 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Wellbe Free Trial</title>
+<title>Your first session is free | Wellbe Health Center</title>
 <meta name="description" content="Semi private training in Bsalim, max 3 clients per coach, led by a team of trainers and a physiotherapist. Your first session is free.">
 <meta property="og:title" content="Your first session is free | Wellbe Health Center">
 <meta property="og:description" content="Semi private training, max 3 clients per coach. Bsalim.">
 <meta property="og:image" content="img/center.jpg">
+<meta name="theme-color" content="#151b1e">
 <link rel="icon" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/center.webp">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp">
 <style>
-/* Layout: photo-led hero, one decision per screen. The form is a full-screen
-   step flow (one question per screen) that slides over the page. */
+/* One page, one decision: pick a time on the page, then name + WhatsApp in a sheet. */
 :root{
-  --ink:#151b1e; --ink-2:#4b565b; --line:#dfe4e2; --paper:#f4f6f5; --card:#ffffff;
+  --ink:#151b1e; --ink-2:#4b565b; --ink-3:#6b7579; --line:#dfe4e2; --paper:#f4f6f5; --card:#ffffff;
   --mint:#6fc7b1; --mint-deep:#1f6e5b; --mint-soft:#e2f3ee;
   --crimson:#a3263f; --crimson-deep:#861d33; --crimson-soft:#f8e7eb;
   --amber-soft:#fff2d6; --amber-ink:#7a5000;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --body:Barlow,"Segoe UI",Roboto,Arial,sans-serif;
-  --r:16px; --r-lg:22px;
-  --z-header:20; --z-sticky:30; --z-flow:50;
+  --r:14px; --r-lg:22px;
+  --shadow:0 1px 2px rgba(21,27,30,.06),0 8px 28px rgba(21,27,30,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--paper)}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--body);font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper)}
+body.locked{overflow:hidden}
 img{display:block;max-width:100%;height:auto}
-h1,h2,h3{font-family:var(--display);line-height:1.02;letter-spacing:-.005em;text-wrap:balance}
+h1,h2,h3{font-family:var(--display);line-height:1;letter-spacing:-.005em;text-wrap:balance}
 a{color:inherit}
 button{font:inherit;color:inherit;cursor:pointer}
-:focus-visible{outline:3px solid var(--mint-deep);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.icon{width:22px;height:22px;flex:none}
+:focus-visible{outline:3px solid var(--mint-deep);outline-offset:3px;border-radius:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.icon{width:20px;height:20px;flex:none}
+[hidden]{display:none!important}
 
 /* buttons */
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 24px;border:0;border-radius:14px;
-  background:var(--crimson);color:#fff;font:700 19px/1 var(--body);letter-spacing:.01em;text-decoration:none;
-  box-shadow:0 8px 20px rgba(163,38,63,.25);transition:background .2s,transform .15s,box-shadow .2s}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 22px;border:0;border-radius:var(--r);
+  background:var(--crimson);color:#fff;font:700 18.5px/1.15 var(--body);text-align:center;text-decoration:none;
+  box-shadow:0 8px 20px rgba(163,38,63,.24);transition:background .2s,transform .12s,box-shadow .2s}
 .btn:hover{background:var(--crimson-deep)}
 .btn:active{transform:translateY(1px)}
-.btn[disabled]{background:#c9cfcd;color:#fff;box-shadow:none;cursor:not-allowed}
-.btn .sub{font-weight:500;font-size:14px;opacity:.85}
-.btn.ghost{background:transparent;color:var(--ink);box-shadow:none;border:1.5px solid var(--line)}
-.linkbtn{background:none;border:0;color:var(--ink-2);font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:3px;min-height:44px;padding:0 8px}
-
-/* header */
-.top{position:sticky;top:0;z-index:var(--z-header);background:rgba(244,246,245,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
-.top img{height:36px;width:auto}
-.top .hours{font-size:14px;font-weight:600;color:var(--mint-deep);white-space:nowrap}
-
-/* hero */
-.hero{position:relative}
-.hero .media{position:relative;aspect-ratio:3/4;width:100%;max-width:100%;overflow:hidden;background:#cdd6d3}
-.hero .media img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.hero .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,27,30,0) 38%,rgba(21,27,30,.55) 62%,rgba(21,27,30,.88) 100%)}
-.hero .over{position:absolute;left:0;right:0;bottom:0;z-index:1;color:#fff;padding-bottom:16px}
-.hero .over .btn{margin-top:14px}
-.btn.desk{display:none}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font:700 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase}
-.hero .eyebrow{background:var(--mint);color:var(--ink);padding:8px 11px;border-radius:8px;margin-bottom:14px}
-.hero h1{font-size:clamp(44px,12.5vw,84px);font-weight:800;font-style:italic;text-transform:uppercase}
-.hero h1 .again{display:inline-block;color:var(--ink);background:var(--mint);font-weight:900;font-size:1.18em;line-height:.9;padding:.04em .16em .02em .1em;margin-top:.06em;transform:skewX(-6deg)}
-.hero .lede{margin-top:8px;font-size:16.5px;line-height:1.4;max-width:32ch;color:#e9efed}
-.hero-card{position:relative;z-index:2;margin-top:-6px;background:var(--card);border-radius:var(--r-lg) var(--r-lg) 0 0;padding-block:16px 6px}
-.offer{display:grid;gap:2px;margin-bottom:14px}
-.offer .big{font:800 28px/1.05 var(--display);text-transform:uppercase}
-.offer .big b{color:var(--crimson)}
-.offer p{color:var(--ink-2);font-size:16.5px}
-.tag{display:inline-flex;align-items:center;gap:7px;width:max-content;margin-top:6px;font-size:13.5px;font-weight:700;color:var(--crimson);background:var(--crimson-soft);padding:6px 10px;border-radius:999px}
-.tag i{width:7px;height:7px;border-radius:50%;background:var(--crimson);animation:pulse 1.6s infinite}
-@keyframes pulse{50%{opacity:.25}}
-.reassure{display:flex;justify-content:flex-start;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-size:14px;color:var(--ink-2)}
-.reassure span{display:inline-flex;align-items:center;gap:5px}
-.reassure svg{width:16px;height:16px;color:var(--mint-deep)}
-
-/* proof strip */
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px;padding-block:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.fact{text-align:center;min-width:0}
-.fact b{display:block;font:800 30px/1 var(--display);color:var(--ink)}
-.fact span{display:block;font-size:13px;line-height:1.3;color:var(--ink-2);margin-top:4px}
-
-/* sections */
-section.block{padding-block:48px 0}
-.block h2{font-size:clamp(32px,8vw,46px);font-weight:800;text-transform:uppercase;margin-bottom:10px}
-.block .lead{color:var(--ink-2);margin-bottom:22px;max-width:60ch}
-.checks{display:grid;gap:10px;list-style:none}
-.checks li{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;font-size:16.5px}
-.checks svg{width:22px;height:22px;color:var(--crimson);flex:none;margin-top:2px}
-.turn{margin-top:18px;font:700 22px/1.2 var(--display);text-transform:uppercase}
-.turn span{color:var(--mint-deep)}
-
-.feature{display:grid;gap:14px}
-.fcard{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:10px;min-width:0}
-.fcard img{width:110px;height:110px;object-fit:cover;border-radius:12px}
-.fcard h3{font-size:24px;font-weight:700;text-transform:uppercase;margin-bottom:2px}
-.fcard p{font-size:15.5px;color:var(--ink-2);line-height:1.45}
-
-.steps{display:grid;gap:0;counter-reset:s;position:relative}
-.step{display:grid;grid-template-columns:40px 1fr;gap:14px;padding-bottom:20px;position:relative}
-.step:not(:last-child)::before{content:"";position:absolute;left:19px;top:40px;bottom:0;width:2px;background:var(--line)}
-.step .n{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font:800 20px var(--display)}
-.step b{display:block;font-size:17.5px;margin-top:7px}
-.step span{color:var(--ink-2);font-size:15.5px}
-
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding-block:12px;font-weight:700;font-size:17px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary svg{width:20px;height:20px;flex:none;transition:transform .2s;color:var(--mint-deep)}
-.faq details[open] summary svg{transform:rotate(45deg)}
-.faq details p{padding-bottom:16px;color:var(--ink-2);font-size:16px;max-width:60ch}
-
-.final{margin-top:52px;background:var(--ink);color:#fff;border-radius:var(--r-lg);padding:28px 22px;text-align:center}
-.final h2{color:#fff;margin-bottom:6px}
-.final p{color:#c9d3d0;margin-bottom:18px}
-
-footer{padding-block:36px 130px;text-align:center;color:var(--ink-2);font-size:15px}
-footer img{height:42px;width:auto;margin:0 auto 10px}
-footer a{color:var(--mint-deep);font-weight:700}
-
-/* sticky mobile CTA */
-.sticky{position:fixed;left:0;right:0;bottom:0;z-index:var(--z-sticky);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
-  background:linear-gradient(to top,var(--paper) 72%,rgba(244,246,245,0));transition:transform .25s,opacity .25s}
-.sticky.hide{transform:translateY(120%);opacity:0;pointer-events:none}
-
-/* ============ FLOW (full-screen form + booking) ============ */
-.flow{position:fixed;inset:0;z-index:var(--z-flow);background:var(--card);display:flex;flex-direction:column;
-  transform:translateY(100%);transition:transform .32s cubic-bezier(.2,.8,.2,1);visibility:hidden}
-.flow.open{transform:none;visibility:visible}
-.fhead{flex:none;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 0}
-.fbar{display:flex;align-items:center;gap:6px}
-.iconbtn{width:44px;height:44px;border-radius:12px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--ink)}
-.iconbtn:hover{background:var(--paper)}
-.iconbtn[hidden]{display:none}
-.prog{flex:1;height:6px;border-radius:6px;background:var(--line);overflow:hidden}
-.prog i{display:block;height:100%;width:0;background:var(--mint-deep);border-radius:6px;transition:width .3s}
-.fstep{font-size:13px;font-weight:600;color:var(--ink-2);padding:6px 4px 0 56px}
-.fbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px 20px 24px}
-.fbody .inner{max-width:520px;margin:0 auto}
-.pane{display:none;animation:in .28s ease}
-.pane.on{display:block}
-@keyframes in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
-.pane h2{font-size:clamp(32px,8.6vw,40px);font-weight:800;text-transform:uppercase;margin-bottom:6px}
-.pane .help{color:var(--ink-2);font-size:16px;margin-bottom:20px}
-.ffoot{flex:none;padding:12px 20px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--card)}
-.ffoot .inner{max-width:520px;margin:0 auto;display:grid;gap:4px}
-.ffoot .note{text-align:center;font-size:13.5px;color:var(--ink-2);min-height:20px}
-
-.field{display:grid;gap:7px;margin-bottom:16px}
-.field label{font-weight:700;font-size:16px}
-.field label small{font-weight:500;color:var(--ink-2)}
-input[type=text],input[type=tel],input[type=email]{width:100%;min-height:56px;font:500 18px var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:0 16px;outline:none;transition:border-color .15s,box-shadow .15s}
-input:focus{border-color:var(--mint-deep);box-shadow:0 0 0 4px var(--mint-soft);background:#fff}
-.field.bad input{border-color:var(--crimson);background:var(--crimson-soft)}
-.ferr{font-size:14px;font-weight:600;color:var(--crimson);display:none}
-.field.bad .ferr{display:block}
-
-.opts{display:grid;gap:10px}
-.opt{display:flex;align-items:center;gap:14px;width:100%;min-height:60px;padding:12px 16px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:14px;font-weight:600;font-size:17px;transition:border-color .15s,background .15s}
-.opt:hover{border-color:#b9c4c1}
-.opt .box{width:24px;height:24px;flex:none;border-radius:7px;border:2px solid #b4bfbc;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.opt.radio .box{border-radius:50%}
-.opt .box svg{width:15px;height:15px;color:#fff;opacity:0}
-.opt[aria-pressed=true]{border-color:var(--ink);background:var(--paper)}
-.opt[aria-pressed=true] .box{background:var(--ink);border-color:var(--ink)}
-.opt[aria-pressed=true] .box svg{opacity:1}
-.other{margin-top:10px;display:none}
-.other.show{display:block}
-
-/* booking */
-.daytabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -20px 16px;padding:2px 20px 4px}
-.daytabs::-webkit-scrollbar{display:none}
-.day{flex:none;width:64px;min-height:68px;border:1.5px solid var(--line);background:#fff;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;position:relative}
-.day b{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:700}
-.day span{font:800 24px/1 var(--display)}
-.day .live{position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--mint-deep)}
-.day[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
-.day[aria-selected=true] b{color:#c9d3d0}
-.day[aria-selected=true] .live{background:var(--mint)}
-.slots{display:grid;gap:10px}
-.slot{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:64px;padding:12px 16px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:14px;transition:border-color .15s,background .15s}
-.slot:hover:not([disabled]){border-color:#b9c4c1}
-.slot .t{font:800 26px/1 var(--display)}
-
-.badge{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:6px 10px;border-radius:999px;white-space:nowrap}
-.badge svg{width:14px;height:14px}
-.badge.inst{background:var(--mint-soft);color:var(--mint-deep)}
-.badge.req{background:var(--paper);color:var(--ink-2)}
-.badge.full{background:var(--paper);color:#8a9491}
-.slot[disabled]{background:var(--paper);cursor:not-allowed}
-.slot[disabled] .t{color:#9aa3a0}
-.slot[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
-.explain{display:grid;gap:8px;background:var(--paper);border-radius:14px;padding:12px 14px;margin-top:16px;font-size:14px;color:var(--ink-2)}
-.explain div{display:flex;gap:8px;align-items:flex-start}
-.loading{display:grid;place-items:center;gap:10px;padding:36px 0;color:var(--ink-2)}
-.spin{width:28px;height:28px;border:3px solid var(--line);border-top-color:var(--mint-deep);border-radius:50%;animation:sp .8s linear infinite}
-@keyframes sp{to{transform:rotate(360deg)}}
-.alert{display:none;background:var(--crimson-soft);color:var(--crimson-deep);font-weight:600;font-size:15px;padding:12px 14px;border-radius:12px;margin-bottom:14px}
-.alert.show{display:block}
-
-.friendnote{display:flex;gap:10px;align-items:flex-start;background:var(--mint-soft);color:var(--mint-deep);font-weight:600;font-size:15px;border-radius:14px;padding:12px 14px;margin-bottom:16px}
-.friendnote[hidden]{display:none}
-.slot .t{display:block}
-.share{display:grid;gap:10px;margin-top:12px}
+.btn[disabled]{background:#c9cfcd;box-shadow:none;cursor:not-allowed}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:none;border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:#b9c4c1}
 .btn.wa{background:#1f8f4e;box-shadow:0 8px 20px rgba(31,143,78,.22)}
 .btn.wa:hover{background:#17773f}
-.copied{font-size:14px;color:var(--mint-deep);font-weight:600;min-height:20px}
+.linkbtn{background:none;border:0;color:var(--ink-2);font-weight:600;font-size:15.5px;text-decoration:underline;text-underline-offset:3px;min-height:44px;padding:0 6px}
+.spin{width:22px;height:22px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* header */
+.top{background:#fff;border-bottom:1px solid var(--line)}
+.top .in{max-width:1080px;margin:0 auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top img{height:34px;width:auto}
+.top .where{display:flex;align-items:center;gap:5px;font-size:14px;font-weight:600;color:var(--ink-2)}
+.top .where svg{width:16px;height:16px;color:var(--mint-deep)}
+
+/* layout */
+.page{max-width:1080px;margin:0 auto}
+
+/* hero */
+.hero{position:relative;height:clamp(230px,33svh,340px);overflow:hidden;background:#20282b}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,27,30,0) 30%,rgba(21,27,30,.55) 65%,rgba(21,27,30,.9) 100%)}
+.hero .txt{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 20px 16px;color:#fff}
+.eyebrow{display:inline-block;background:var(--mint);color:var(--ink);font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border-radius:7px;margin-bottom:10px}
+.hero h1{font-size:clamp(38px,10.5vw,64px);font-weight:800;font-style:italic;text-transform:uppercase}
+.hero h1 em{font-style:inherit;color:var(--mint)}
+.hero p{margin-top:8px;font-size:15.5px;line-height:1.4;color:#e9efed;max-width:36ch}
+
+/* proof */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-bottom:1px solid var(--line)}
+.fact{padding:11px 6px;text-align:center}
+.fact+.fact{border-left:1px solid var(--line)}
+.fact b{display:block;font:800 24px/1 var(--display);text-transform:uppercase}
+.fact span{display:block;font-size:13px;line-height:1.3;color:var(--ink-2);margin-top:4px}
+
+/* booking card */
+.book{padding:14px 12px 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px 16px}
+.card h2{font-size:32px;font-weight:800;text-transform:uppercase}
+.card .help{color:var(--ink-2);font-size:15px;margin:4px 0 14px}
+.note{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:15px;font-weight:600}
+.note .icon{margin-top:1px}
+.note.friend{background:var(--mint-soft);color:var(--mint-deep)}
+.note.err{background:var(--crimson-soft);color:var(--crimson-deep)}
+.note.ok{background:var(--mint-soft);color:var(--ink)}
+.note.ok button{margin-left:auto}
+
+.days{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 14px;padding:2px 16px 4px;scroll-snap-type:x proximity}
+.days::-webkit-scrollbar{display:none}
+.day{flex:none;scroll-snap-align:start;width:66px;min-height:70px;border:1.5px solid var(--line);background:#fff;border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.day b{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:700}
+.day span{font:800 26px/1 var(--display)}
+.day[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.day[aria-pressed=true] b{color:#c9d3d0}
+.day.none{opacity:.45}
+
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:64px;border:1.5px solid var(--line);background:#fff;border-radius:var(--r);padding:8px}
+.slot .t{font:800 25px/1 var(--display)}
+.slot small{font-size:12.5px;font-weight:600;color:var(--ink-3)}
+.slot:hover:not([disabled]){border-color:#9fb0ac}
+.slot[aria-pressed=true]{border-color:var(--crimson);background:var(--crimson-soft);box-shadow:inset 0 0 0 1px var(--crimson)}
+.slot[aria-pressed=true] .t{color:var(--crimson-deep)}
+.slot[disabled]{background:var(--paper);cursor:not-allowed}
+.slot[disabled] .t{color:#9aa3a0;text-decoration:line-through}
+.skel{height:64px;border-radius:var(--r);background:linear-gradient(90deg,#eef1f0 25%,#f7f9f8 50%,#eef1f0 75%);background-size:200% 100%;animation:sh 1.2s infinite}
+.skel.day{width:66px;height:70px;border:0}
+@keyframes sh{to{background-position:-200% 0}}
+.empty{text-align:center;color:var(--ink-2);padding:18px 6px;font-size:15.5px}
+
+.cta{margin-top:16px}
+.cta .sub{display:block;text-align:center;font-size:13.5px;color:var(--ink-2);margin-top:8px}
+.alt{text-align:center;margin-top:6px}
+
+/* how it works + info */
+.info{padding:28px 20px 8px}
+.info h2{font-size:28px;font-weight:800;text-transform:uppercase;margin-bottom:14px}
+.steps{list-style:none;display:grid;gap:14px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;counter-increment:s}
+.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font:800 18px var(--display)}
+.steps b{display:block;font-size:16.5px;line-height:1.3;margin-top:5px}
+.steps span{color:var(--ink-2);font-size:15px}
+.visit{display:grid;gap:10px;margin-top:24px}
+footer{padding:28px 20px calc(110px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--ink-2);font-size:14.5px}
+footer img{height:38px;width:auto;margin:0 auto 8px}
+
+/* sticky mobile CTA */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);transition:transform .22s,opacity .22s}
+.sticky.hide{transform:translateY(110%);opacity:0;pointer-events:none}
+
+/* ============ SHEET (contact + done) ============ */
+.sheet{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;justify-content:flex-end;visibility:hidden;pointer-events:none}
+.sheet.open{visibility:visible;pointer-events:auto}
+.scrim{position:absolute;inset:0;background:rgba(21,27,30,.5);opacity:0;transition:opacity .25s}
+.sheet.open .scrim{opacity:1}
+.panel{position:relative;background:var(--card);border-radius:var(--r-lg) var(--r-lg) 0 0;max-height:94dvh;display:flex;flex-direction:column;
+  transform:translateY(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);width:100%}
+.sheet.open .panel{transform:none}
+.phead{flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 10px 0 20px}
+.phead .grab{position:absolute;left:50%;top:7px;width:40px;height:4px;border-radius:4px;background:var(--line);transform:translateX(-50%)}
+.phead .lbl{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-top:6px}
+.iconbtn{width:44px;height:44px;border-radius:12px;border:0;background:transparent;display:flex;align-items:center;justify-content:center}
+.iconbtn:hover{background:var(--paper)}
+.pbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 20px 20px}
+.pbody h2{font-size:32px;font-weight:800;text-transform:uppercase;margin-bottom:6px}
+.pbody .help{color:var(--ink-2);font-size:15.5px;margin-bottom:16px}
+.chosen{display:flex;align-items:center;gap:12px;background:var(--paper);border-radius:var(--r);padding:12px 14px;margin-bottom:18px}
+.chosen .icon{color:var(--crimson)}
+.chosen div{flex:1;min-width:0}
+.chosen b{display:block;font-size:16.5px;line-height:1.25}
+.chosen span{font-size:13.5px;color:var(--ink-2)}
+
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label{font-weight:700;font-size:16px}
+.field label small{font-weight:500;color:var(--ink-2)}
+.field .hint{font-size:13.5px;color:var(--ink-2)}
+input{width:100%;min-height:56px;font:500 18px var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r);padding:0 16px;outline:none;transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+input::placeholder{color:#9aa3a0}
+input:focus{border-color:var(--mint-deep);box-shadow:0 0 0 4px var(--mint-soft);background:#fff}
+.field.bad input{border-color:var(--crimson);background:var(--crimson-soft)}
+.ferr{font-size:14px;font-weight:600;color:var(--crimson-deep);display:none;align-items:center;gap:6px}
+.ferr .icon{width:16px;height:16px}
+.field.bad .ferr{display:flex}
+.pfoot{flex:none;padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--card)}
+.pfoot .sub{text-align:center;font-size:13.5px;color:var(--ink-2);margin-top:8px}
+
+/* done */
+.done{text-align:center;padding-top:6px}
+.ring{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.ring.ok{background:var(--mint)}
+.ring.wait{background:var(--amber-soft);color:var(--amber-ink)}
+.ring svg{width:34px;height:34px}
+.status{display:inline-flex;align-items:center;font-size:14px;font-weight:700;padding:6px 12px;border-radius:999px;margin-bottom:10px}
+.status.ok{background:var(--mint-soft);color:var(--mint-deep)}
+.status.wait{background:var(--amber-soft);color:var(--amber-ink)}
+.when{display:inline-block;font:800 24px/1.15 var(--display);text-transform:uppercase;background:var(--paper);border-radius:12px;padding:10px 16px;margin:8px 0 12px}
+.done>p{color:var(--ink-2)}
+.panelbox{text-align:left;background:var(--paper);border-radius:var(--r);padding:16px;margin-top:16px}
+.panelbox h3{font-size:21px;text-transform:uppercase;margin-bottom:8px}
+.panelbox p{font-size:15.5px;color:var(--ink-2)}
+.panelbox ul{list-style:none;display:grid;gap:6px;font-size:15.5px;color:var(--ink-2)}
+.panelbox li{display:flex;gap:8px}
+.panelbox li svg{width:18px;height:18px;color:var(--mint-deep);flex:none;margin-top:3px}
+.share{display:grid;gap:10px;margin-top:12px}
+.copied{font-size:14px;color:var(--mint-deep);font-weight:600;min-height:20px;word-break:break-all}
+.offerbox{text-align:left;border:1.5px solid var(--line);border-radius:var(--r);padding:16px;margin-top:12px}
+.offerbox .big{font:800 26px/1.05 var(--display);text-transform:uppercase}
+.offerbox .big b{color:var(--crimson)}
+.offerbox p{color:var(--ink-2);font-size:15.5px;margin-top:4px}
 .towels{display:flex;align-items:flex-end;justify-content:center;gap:28px;margin-top:14px;padding:14px 10px 10px;background:#fff;border-radius:12px;--towel:#eef3f1;--towel-edge:#9fb3ad}
 .towels figure{display:grid;justify-items:center;gap:6px}
 .towels figcaption{font-size:13.5px;color:var(--ink-2);text-align:center;line-height:1.3}
 .towels figcaption b{display:block;font-size:14px}
 .towels .no{color:var(--crimson)}
 .towels .yes{color:var(--mint-deep)}
-/* done */
-.done{text-align:center;padding-top:10px}
-.done .ring{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.done .ring.ok{background:var(--mint)}
-.done .ring.wait{background:var(--amber-soft);color:var(--amber-ink)}
-.done .ring svg{width:36px;height:36px}
-.status{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;padding:7px 12px;border-radius:999px;margin-bottom:10px}
-.status.ok{background:var(--mint-soft);color:var(--mint-deep)}
-.status.wait{background:var(--amber-soft);color:var(--amber-ink)}
-.when{display:inline-block;font:800 24px/1.1 var(--display);text-transform:uppercase;background:var(--paper);border-radius:12px;padding:10px 16px;margin:8px 0 12px}
-.done p{color:var(--ink-2)}
-.panelbox{text-align:left;background:var(--paper);border-radius:14px;padding:16px;margin-top:18px}
-.panelbox h3{font-size:20px;text-transform:uppercase;margin-bottom:8px}
-.panelbox ul{list-style:none;display:grid;gap:6px;font-size:15.5px;color:var(--ink-2)}
-.panelbox li{display:flex;gap:8px}
-.panelbox li svg{width:18px;height:18px;color:var(--mint-deep);flex:none;margin-top:3px}
-.offerbox{text-align:left;border:1.5px solid var(--line);border-radius:14px;padding:16px;margin-top:12px;background:#fff}
-
 
 @media (min-width:860px){
-  .hero{display:grid;grid-template-columns:1fr 1fr;max-width:1080px;margin:32px auto 0;padding-inline:20px;gap:0;align-items:stretch}
-  .hero .media{border-radius:var(--r-lg) 0 0 var(--r-lg)}
-  .hero .over .btn{display:none}
-  .btn.desk{display:flex}
-  .hero .over .wrap{padding-inline:28px}
-  .hero-card{margin:0;border-radius:0 var(--r-lg) var(--r-lg) 0;padding:40px 36px;display:flex;flex-direction:column;justify-content:center}
-  .hero-card .wrap{padding:0}
-  .hero h1{font-size:76px}
-  .feature{grid-template-columns:repeat(3,1fr)}
-  .fcard{grid-template-columns:1fr;padding:0;overflow:hidden}
-  .fcard img{width:100%;height:220px;border-radius:0}
-  .fcard .t{padding:4px 18px 20px}
-  .checks{grid-template-columns:1fr 1fr}
-  .steps{grid-template-columns:repeat(3,1fr);gap:24px}
-  .step:not(:last-child)::before{display:none}
+  .page{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;padding:28px 20px 0;align-items:start}
+  .lead-col{position:sticky;top:20px}
+  .hero{height:560px;border-radius:var(--r-lg) var(--r-lg) 0 0}
+  .facts{border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r-lg) var(--r-lg)}
+  .book{padding:0}
+  .card{padding:26px 24px}
+  .days{margin:0 0 14px;padding:2px 0 4px}
+  .info{padding:28px 0 0}
   .sticky{display:none}
-  .flow{align-items:center;justify-content:center;background:rgba(21,27,30,.55)}
-  .flow .sheet{width:560px;height:min(820px,92vh);border-radius:var(--r-lg);overflow:hidden}
-  .daytabs{margin:0 0 16px;padding:2px 0 4px}
+  footer{padding-bottom:40px}
+  .sheet{justify-content:center;align-items:center}
+  .panel{width:520px;max-height:min(820px,92vh);border-radius:var(--r-lg);transform:translateY(24px);opacity:0;transition:transform .25s,opacity .25s}
+  .sheet.open .panel{transform:none;opacity:1}
+  .phead .grab{display:none}
 }
-.sheet{display:flex;flex-direction:column;height:100%;width:100%;background:var(--card)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-
-/* ONE SCREEN: photo, headline, offer, button. No scrolling: the button opens the booking flow. */
-html,body{height:100%;overflow:hidden;overscroll-behavior:none}
-body{display:flex;flex-direction:column;height:100dvh}
-.top{flex:none}
-main.one{flex:1;min-height:0;display:flex}
-.hero1{position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#20282b}
-.hero1 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:76% 35%}
-.hero1 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,27,30,.05) 0%,rgba(21,27,30,.25) 35%,rgba(21,27,30,.82) 62%,rgba(21,27,30,.95) 100%)}
-.hero1 .content{position:relative;z-index:1;color:#fff;padding:0 20px max(18px,env(safe-area-inset-bottom));max-width:620px;width:100%;margin:0 auto}
-.eyebrow1{display:inline-block;align-self:flex-start;background:var(--mint);color:var(--ink);font:700 12.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:8px 11px;border-radius:8px;margin-bottom:12px}
-.hero1 h1{font-size:clamp(44px,12vw,84px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:.95}
-.hero1 h1 .again{display:inline-block;color:var(--ink);background:var(--mint);font-weight:900;font-size:1.12em;line-height:.9;padding:.04em .16em .02em .1em;margin-top:.06em;transform:skewX(-6deg)}
-.hero1 .lede{margin-top:12px;font-size:19px;line-height:1.35;color:#fff;font-weight:600}
-.offer1{margin-top:12px;font-size:15.5px;line-height:1.35;color:#fff;background:rgba(163,38,63,.92);border-radius:12px;padding:10px 12px}
-.offer1 b{font-weight:800}
-.hero1 .btn{margin-top:14px;min-height:60px;font-size:20px}
-.reassure1{display:flex;justify-content:space-between;gap:6px;margin-top:10px;font-size:13.5px;font-weight:600;color:#dfe8e5}
-.reassure1 span{display:flex;align-items:center;gap:5px}
-.reassure1 svg{width:16px;height:16px;color:var(--mint)}
-@media (max-height:640px){.hero1 h1{font-size:clamp(40px,11vw,70px)}}
-@media (min-width:860px){
-  .hero1{flex-direction:row;align-items:stretch;justify-content:stretch}
-  .hero1 .bg{position:relative;width:58%;height:100%;inset:auto}
-  .hero1 .shade{display:none}
-  .hero1 .content{width:42%;max-width:none;margin:0;display:flex;flex-direction:column;justify-content:center;padding:40px 48px;background:var(--ink)}
-}
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
-  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
-  <symbol id="i-bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.8"/><path d="M17.5 14.6c2.3.4 3.7 2.2 4.2 4.9"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
@@ -305,113 +236,133 @@ main.one{flex:1;min-height:0;display:flex}
 </svg>
 
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1458018466274647&amp;ev=PageView&amp;noscript=1"></noscript>
+
 <header class="top">
-  <div class="wrap">
+  <div class="in">
     <img src="img/logo.png" alt="Wellbe Health Center" width="190" height="80">
+    <span class="where"><svg aria-hidden="true"><use href="#i-pin"/></svg>Bsalim</span>
   </div>
 </header>
 
-<main class="one">
-  <section class="hero1">
-    <img class="bg" src="img/center.webp" alt="Inside Wellbe Health Center in Bsalim" width="1080" height="977" fetchpriority="high">
-    <div class="shade"></div>
-    <div class="content">
-      <h1>Fill the <span class="again">form.</span></h1>
-      <p class="lede">Takes 60s to book now for free.</p>
-      <button class="btn" type="button" data-open id="heroCta">Let's Go <svg class="icon"><use href="#i-arrow"/></svg></button>
+<main class="page">
+  <div class="lead-col">
+    <section class="hero" aria-labelledby="h1">
+      <img src="img/hero.webp" alt="A client training at Wellbe Health Center" width="900" height="1600" fetchpriority="high">
+      <div class="txt">
+        <span class="eyebrow">Free trial session</span>
+        <h1 id="h1">Your first session is <em>free.</em></h1>
+        <p>Semi private training in Bsalim, led by a team of trainers and a physiotherapist.</p>
+      </div>
+    </section>
+    <div class="facts">
+      <div class="fact"><b>Max 3</b><span>clients per coach</span></div>
+      <div class="fact"><b>60 min</b><span>per session</span></div>
+      <div class="fact"><b>Physio</b><span>on the team</span></div>
     </div>
-  </section>
-</main>
-
-<!-- ================= FLOW ================= -->
-<div class="flow" id="flow" role="dialog" aria-modal="true" aria-labelledby="flowTitle">
- <div class="sheet">
-  <div class="fhead">
-    <div class="fbar">
-      <button class="iconbtn" id="backBtn" type="button" aria-label="Back"><svg class="icon"><use href="#i-back"/></svg></button>
-      <div class="prog" aria-hidden="true"><i id="progBar"></i></div>
-      <button class="iconbtn" id="closeBtn" type="button" aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button>
-    </div>
-    <div class="fstep" id="stepLabel">Step 1 of 5</div>
   </div>
 
-  <div class="fbody" id="fbody"><div class="inner">
-    <div class="alert" id="flowErr" role="alert"></div>
+  <div>
+    <section class="book" id="book" aria-labelledby="bookTitle">
+      <div class="card">
+        <h2 id="bookTitle">Pick your time</h2>
+        <p class="help">Choose a day, then a time. You'll add your name and WhatsApp number next.</p>
 
-    <!-- 0 contact -->
-    <div class="pane" data-step="0">
-      <h2 id="flowTitle">Where do we send your confirmation?</h2>
-      <p class="help" id="contactHelp">Your spot is confirmed on WhatsApp. Takes 60 seconds.</p>
+        <div class="note ok" id="bookedNote" hidden></div>
+        <div class="note friend" id="friendNote" hidden></div>
+        <div class="note err" id="bookErr" role="alert" hidden></div>
+
+        <div id="slotArea" aria-live="polite">
+          <div class="days" aria-hidden="true"><div class="skel day"></div><div class="skel day"></div><div class="skel day"></div><div class="skel day"></div><div class="skel day"></div></div>
+          <div class="slots" aria-hidden="true"><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+          <p class="sr">Checking open times…</p>
+        </div>
+
+        <div class="cta" id="cardCta">
+          <button class="btn" type="button" id="bookBtn" disabled>Pick a time above</button>
+          <span class="sub">Free. No payment needed to book.</span>
+        </div>
+        <div class="alt"><button type="button" class="linkbtn" id="noTimeBtn">None of these work? Leave your number instead</button></div>
+      </div>
+    </section>
+
+    <section class="info" aria-labelledby="howTitle">
+      <h2 id="howTitle">How it works</h2>
+      <ol class="steps">
+        <li><div><b>Pick a morning that suits you</b><span>A 60 minute session, max 3 clients with your coach.</span></div></li>
+        <li><div><b>Leave your name and WhatsApp number</b><span>That's all we need to hold your spot.</span></div></li>
+        <li><div><b>We message you on WhatsApp</b><span>Within 24 hours, to welcome you and answer your questions.</span></div></li>
+      </ol>
+      <div class="visit">
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Wellbe+Health+Center+Bsalim" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Wellbe Health Center, Bsalim</a>
+        <a class="btn ghost" href="https://wa.me/96176511048" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" style="color:#1f8f4e"><use href="#i-wa"/></svg>Questions? WhatsApp us</a>
+      </div>
+    </section>
+
+    <footer>
+      <img src="img/logo.png" alt="" width="190" height="80">
+      Wellbe Health Center, Bsalim
+    </footer>
+  </div>
+</main>
+
+<div class="sticky hide" id="sticky">
+  <button class="btn" type="button" id="stickyBtn">Pick a time</button>
+</div>
+
+<!-- ============ SHEET ============ -->
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="phead">
+      <span class="grab" aria-hidden="true"></span>
+      <span class="lbl" id="sheetLbl">Last step</span>
+      <button class="iconbtn" type="button" data-close aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button>
+    </div>
+
+    <form class="pbody" id="contactForm" novalidate>
+      <h2 id="sheetTitle">Hold your spot</h2>
+      <p class="help" id="contactHelp">We confirm your session on WhatsApp.</p>
+
+      <div class="chosen" id="chosen">
+        <svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg>
+        <div><b id="chosenWhen"></b><span>Free trial, 60 minutes</span></div>
+        <button type="button" class="linkbtn" id="changeBtn">Change</button>
+      </div>
+
+      <div class="note err" id="formErr" role="alert" hidden></div>
+
       <div class="field" id="fName">
         <label for="name">Your name</label>
-        <input type="text" id="name" autocomplete="name" autocapitalize="words" enterkeyhint="next">
-        <span class="ferr">Please enter your name.</span>
+        <input type="text" id="name" name="name" autocomplete="name" autocapitalize="words" enterkeyhint="next" required aria-describedby="nameErr">
+        <span class="ferr" id="nameErr"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Please enter your name.</span>
       </div>
       <div class="field" id="fPhone">
-        <label for="phone">Phone number <small>(WhatsApp)</small></label>
-        <input type="tel" id="phone" autocomplete="tel" inputmode="tel" placeholder="03 123 456" enterkeyhint="done">
-        <span class="ferr">Please check your phone number.</span>
+        <label for="phone">WhatsApp number</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="03 123 456" enterkeyhint="next" required aria-describedby="phoneHint phoneErr">
+        <span class="hint" id="phoneHint">We send your confirmation here.</span>
+        <span class="ferr" id="phoneErr"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Please check your number (at least 7 digits).</span>
       </div>
-      <div class="field" id="fEmail">
+      <div class="field" id="fInj">
+        <label for="injuries">Any injury or pain? <small>(optional)</small></label>
+        <input type="text" id="injuries" name="injuries" maxlength="200" placeholder="e.g. lower back, left knee" enterkeyhint="done" aria-describedby="injHint">
+        <span class="hint" id="injHint">Your coach plans the session around it.</span>
+      </div>
+      <button type="button" class="linkbtn" id="addEmail" style="padding-left:0">+ Add email (optional)</button>
+      <div class="field" id="fEmail" hidden>
         <label for="email">Email <small>(optional)</small></label>
-        <input type="email" id="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="name@example.com" enterkeyhint="done">
-        <span class="ferr">Please check your email.</span>
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="name@example.com" enterkeyhint="done" aria-describedby="emailErr">
+        <span class="ferr" id="emailErr"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Please check your email, or leave it empty.</span>
       </div>
+      <button type="submit" hidden></button>
+    </form>
+
+    <div class="pbody" id="doneArea" hidden></div>
+
+    <div class="pfoot" id="pfoot">
+      <button class="btn" type="submit" form="contactForm" id="submitBtn">Book my free session</button>
+      <p class="sub" id="submitSub">Free. No payment needed.</p>
     </div>
-
-    <!-- 1 trained -->
-    <div class="pane" data-step="1">
-      <h2>Have you trained before?</h2>
-      <p class="help">Tap one.</p>
-      <div class="opts" data-q="trained" data-single>
-        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>No, this is my first time</button>
-        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Yes, but I stopped</button>
-        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Yes, I train now</button>
-      </div>
-    </div>
-
-    <!-- 2 goal -->
-    <div class="pane" data-step="2">
-      <h2>What do you want most?</h2>
-      <p class="help">Tap one.</p>
-      <div class="opts" data-q="why" data-single>
-        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Feel strong again</button>
-        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Less back or knee pain</button>
-        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Lose weight</button>
-        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>More energy</button>
-        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>Stronger bones and joints</button>
-      </div>
-    </div>
-
-    <!-- 3 injuries -->
-    <div class="pane" data-step="3">
-      <h2>Any injuries or pain?</h2>
-      <p class="help">Your coach plans around it. Nothing is too small to mention.</p>
-      <div class="opts" data-q="injuries" data-single>
-        <button type="button" class="opt radio" aria-pressed="false"><span class="box"><svg><use href="#i-check"/></svg></span>No</button>
-        <button type="button" class="opt radio" aria-pressed="false" data-other><span class="box"><svg><use href="#i-check"/></svg></span>Yes</button>
-      </div>
-      <div class="other field"><label for="injuriesOther">Where?</label><input type="text" id="injuriesOther" placeholder="e.g. lower back, left knee, shoulder"></div>
-    </div>
-
-    <!-- 4 booking -->
-    <div class="pane" data-step="4">
-      <h2 id="bookTitle">Pick your morning</h2>
-      <p class="help">60 minute session, max 3 clients with your coach. Pick a day, then a time.</p>
-      <div class="friendnote" id="friendNote" hidden></div>
-      <div id="slotArea"><div class="loading"><div class="spin"></div>Checking open spots…</div></div>
-      <div style="text-align:center;margin-top:8px"><button type="button" class="linkbtn" id="skipBtn">None of these work? Message me instead</button></div>
-    </div>
-
-    <!-- 6 done -->
-    <div class="pane" data-step="5"><div id="doneArea"></div></div>
-  </div></div>
-
-  <div class="ffoot" id="ffoot"><div class="inner">
-    <div class="note" id="footNote"></div>
-    <button class="btn" type="button" id="nextBtn">Continue</button>
-  </div></div>
- </div>
+  </div>
 </div>
 
 <script>
@@ -426,6 +377,7 @@ var CONFIG = {
   var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
   var store={get:function(k){try{return JSON.parse(sessionStorage.getItem(k))}catch(e){return null}},set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
   function track(ev){try{if(window.fbq)fbq('track',ev)}catch(e){}}
+  function trackC(ev,p){try{if(window.fbq)fbq('trackCustom',ev,p||{})}catch(e){}}
   if(CONFIG.PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CONFIG.PIXEL_ID);fbq('track','PageView')}
   function esc(t){return String(t||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 
@@ -434,158 +386,168 @@ var CONFIG = {
   // invite link from a friend: ?d=2026-10-14&h=7&by=Rita
   var invite = (/^\d{4}-\d{2}-\d{2}$/.test(qs.get('d')||'') && /^(7|8|9|10)$/.test(qs.get('h')||'')) ? {date:qs.get('d'),hour:+qs.get('h'),by:(qs.get('by')||'your friend').slice(0,30)} : null;
 
-
-
-  /* ---------- API ---------- */
+  /* ---------- API (unchanged contract: GET slots, POST lead, POST book) ---------- */
   function apiGet(){ if(!CONFIG.API_URL) return demoSlots(); return fetch(CONFIG.API_URL+'?action=slots&t='+Date.now()).then(function(r){return r.json()}) }
   function apiPost(b){ if(!CONFIG.API_URL) return demoPost(b); return fetch(CONFIG.API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(b)}).then(function(r){return r.json()}) }
 
-  /* ---------- flow state: name + phone, 3 taps, pick a time ---------- */
-  var flow=$('#flow'), step=0, TOTAL=5, lead=store.get('w40lead'), data=null, curDay=null, sel=null, mode='book';
-  var nextBtn=$('#nextBtn'), backBtn=$('#backBtn'), err=$('#flowErr'), note=$('#footNote'), lastFocus=null;
-  function trackC(ev,p){try{if(window.fbq)fbq('trackCustom',ev,p||{})}catch(e){}}
-
-  function openFlow(){
-    lastFocus=document.activeElement; flow.classList.add('open'); document.body.style.overflow='hidden';
-    trackC('OpenForm');
-    var done=store.get('w40done');
-    if(done){ show(5); renderDone(done) } else if(lead&&lead.id){ show(lead.answered?4:1) } else show(0);
-  }
-  function closeFlow(){ flow.classList.remove('open'); document.body.style.overflow=''; if(lastFocus) lastFocus.focus() }
-  $$('[data-open]').forEach(function(b){ b.addEventListener('click',openFlow) });
-  $('#closeBtn').addEventListener('click',closeFlow);
-  addEventListener('keydown',function(e){ if(e.key==='Escape'&&flow.classList.contains('open')) closeFlow() });
-
-  var seen={};
-  function show(n){
-    step=n; err.classList.remove('show');
-    $$('.pane').forEach(function(p){p.classList.toggle('on',+p.dataset.step===n)});
-    $('#progBar').style.width=(Math.min(n+1,TOTAL)/TOTAL*100)+'%';
-    $('#stepLabel').textContent= n<TOTAL ? 'Step '+(n+1)+' of '+TOTAL : 'All done';
-    backBtn.hidden = (n===0 || n===1 || n===5);
-    $('#ffoot').hidden = (n===5);
-    $('#fbody').scrollTop=0; note.textContent='';
-    if(n<5&&!seen[n]){seen[n]=1;trackC('FormStep',{step:n+1})}
-    if(n>=1&&n<=3) refreshNext();
-    if(n===4){ $('#bookTitle').textContent='Pick your time'; updateBookBtn(); if(!data) loadSlots(); else renderSlots() }
-    if(n===0){ nextBtn.disabled=false; nextBtn.textContent='Continue';
-      setTimeout(function(){ if(!$('#name').value) $('#name').focus() },320) }
-  }
-  backBtn.addEventListener('click',function(){ if(step>1) show(step-1) });
-
-  /* ---------- options ---------- */
-  var Q={1:'trained',2:'why',3:'injuries'};
-  $$('.opts').forEach(function(g){
-    var single=g.hasAttribute('data-single');
-    g.addEventListener('click',function(e){
-      var o=e.target.closest('.opt'); if(!o) return;
-      if(single) $$('.opt',g).forEach(function(x){ if(x!==o) x.setAttribute('aria-pressed','false') });
-      o.setAttribute('aria-pressed', single?'true':(o.getAttribute('aria-pressed')==='true'?'false':'true'));
-      var other=$('[data-other]',g), box=g.parentNode.querySelector('.other'), otherOn=other&&other.getAttribute('aria-pressed')==='true';
-      if(box){ box.classList.toggle('show',otherOn); if(otherOn&&o===other) setTimeout(function(){box.querySelector('input').focus()},50) }
-      refreshNext();
-      if(single && !otherOn) setTimeout(goNext,240); // single choice: move on automatically
-    });
-  });
-  function picked(q){ return $$('.opts[data-q="'+q+'"] .opt[aria-pressed=true]').map(function(o){return o.textContent.trim()}) }
-  function answer(q,id){ var o=$('#'+id)?$('#'+id).value.trim():''; return picked(q).map(function(v){return (v==='Something else'||v==='Yes')&&o? v+': '+o : v}).join(', ') }
-  function refreshNext(){
-    if(step<1||step>3) return;
-    var ok=picked(Q[step]).length>0, yes=step===3&&picked('injuries').join('')==='Yes';
-    nextBtn.disabled=!ok; nextBtn.textContent='Continue'; note.textContent='';
-    $('#ffoot').hidden = !yes;   // single taps move on by themselves: no dead button
-  }
-
-  /* ---------- next ---------- */
-  function busy(on,label){ nextBtn.disabled=on; if(label) nextBtn.textContent=label }
-  function fail(msg){ err.textContent=msg; err.classList.add('show'); $('#fbody').scrollTop=0 }
-  nextBtn.addEventListener('click',goNext);
-  $('#name').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); $('#phone').focus() } });
-  $('#phone').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); goNext() } });
-  $('#email').addEventListener('keydown',function(e){ if(e.key==='Enter') goNext() });
-
-  function goNext(){
-    if(step===0) return submitContact();
-    if(step>=1&&step<=3){ if(!picked(Q[step]).length) return; if(step===3) saveAnswers(); return show(step+1) }
-    if(step===4){ if(sel) submitBooking() }
-  }
-
-  // answers saved onto the lead row (contact comes first, so a drop off is still a lead)
-  function saveAnswers(){
-    if(!lead||!lead.id) return;
-    lead.answered=true; store.set('w40lead',lead);
-    apiPost({action:'answers',leadId:lead.id,trained:picked('trained').join(', '),stopped:'',why:picked('why').join(', '),injuries:answer('injuries','injuriesOther')}).catch(function(){});
-  }
-  // contact first: creates the lead, then the questions, then the time
-  function submitContact(){
-    var name=$('#name').value.trim(), phone=$('#phone').value.trim(), email=$('#email').value.trim();
-    var okName=name.length>=2, okPhone=phone.replace(/\D/g,'').length>=7, okEmail=!email||/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-    $('#fName').classList.toggle('bad',!okName); $('#fPhone').classList.toggle('bad',!okPhone); $('#fEmail').classList.toggle('bad',!okEmail);
-    if(!okName||!okPhone||!okEmail){ ( !okName?$('#name'):!okPhone?$('#phone'):$('#email') ).focus(); return }
-    busy(true,'Saving…');
-    apiPost({action:'lead',name:name,phone:phone,email:email,source:source}).then(function(res){
-      if(!res.ok) throw new Error(res.error||'Something went wrong');
-      lead={id:res.leadId,first:name.split(' ')[0],locked:true,answered:false}; store.set('w40lead',lead); track('Lead');
-      if(res.booked){ var o={type:'Instant',date:res.date,label:res.time,already:true}; store.set('w40done',o); show(5); return renderDone(o) }
-      show(1);
-    }).catch(function(e){ fail(e.message&&e.message.length<160?e.message:'Connection problem. Please try again.'); busy(false,'Try again') });
-  }
-
-  /* ---------- booking ---------- */
+  /* ---------- dates ---------- */
   function fmt(ymd){ var d=new Date(ymd+'T12:00:00Z'), o={timeZone:'UTC'};
     return {w:d.toLocaleDateString('en-GB',Object.assign({weekday:'short'},o)),n:d.getUTCDate(),
       long:d.toLocaleDateString('en-GB',Object.assign({weekday:'long',day:'numeric',month:'long'},o)),
       short:d.toLocaleDateString('en-GB',Object.assign({weekday:'short',day:'numeric',month:'short'},o))} }
   function hl(h){ return (h%12||12)+':00 '+(h<12?'AM':'PM') }
-  function findSlot(date,hour){ var d=(data||[]).filter(function(x){return x.date===date})[0]; return d&&d.slots.filter(function(s){return s.hour===hour})[0] }
 
-  function loadSlots(){
-    $('#slotArea').innerHTML='<div class="loading"><div class="spin"></div>Checking open times…</div>';
+  /* ---------- state ---------- */
+  var data=null, curDay=null, sel=null, mode='book', busy=false;
+  var lead=store.get('w40lead');                  // {id, first, name, phone, email}
+  var bookBtn=$('#bookBtn'), stickyBtn=$('#stickyBtn'), sticky=$('#sticky');
+  function findSlot(date,hour){ var d=(data||[]).filter(function(x){return x.date===date})[0]; return d&&d.slots.filter(function(s){return s.hour===hour})[0] }
+  function dayOpen(d){ return d.slots.some(function(s){return s.type!=='full'}) }
+
+  /* ---------- slots on the page ---------- */
+  function showBookErr(msg){ var e=$('#bookErr'); e.innerHTML='<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>'+esc(msg)+'</span>'; e.hidden=!msg }
+  function loadSlots(keepSel){
     apiGet().then(function(res){
-      if(!res.ok) throw 0; data=res.days||[]; if(res.cap) CONFIG.CAP=res.cap;
-      if(!data.length){ $('#slotArea').innerHTML='<p class="loading">No times open this week. Tap below and we will reach out.</p>'; return }
-      curDay=data[0].date;
-      var fn=$('#friendNote'); fn.hidden=true;
-      if(invite){
-        var s=findSlot(invite.date,invite.hour);
-        if(s && s.type!=='full'){ curDay=invite.date; sel={date:invite.date,hour:invite.hour,type:s.type};
-          fn.innerHTML='<svg class="icon" style="width:20px;height:20px"><use href="#i-users"/></svg><span>Joining '+esc(invite.by)+' on '+fmt(invite.date).short+' at '+hl(invite.hour)+'. Tap the button below to book your spot.</span>'; fn.hidden=false }
-        else { fn.innerHTML='<svg class="icon" style="width:20px;height:20px"><use href="#i-users"/></svg><span>'+esc(invite.by)+'\'s session is full or no longer open. Pick another time below.</span>'; fn.hidden=false }
+      if(!res||!res.ok) throw 0; data=res.days||[]; if(res.cap) CONFIG.CAP=res.cap;
+      if(!data.length){ $('#slotArea').innerHTML='<p class="empty">No open times this week. Leave your number below and we\'ll find one with you.</p>'; sel=null; updateCta(); return }
+      if(sel && !(findSlot(sel.date,sel.hour)||{type:'full'}).type.match(/instant|request/)) sel=null;
+      if(!keepSel && invite && !store.get('w40done')){
+        var s=findSlot(invite.date,invite.hour), fn=$('#friendNote');
+        if(s && s.type!=='full'){ curDay=invite.date; sel={date:invite.date,hour:invite.hour};
+          fn.innerHTML='<svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span>Joining '+esc(invite.by)+' on '+fmt(invite.date).short+' at '+hl(invite.hour)+'. Tap the button below to book your spot.</span>' }
+        else fn.innerHTML='<svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span>'+esc(invite.by)+'\'s session is full or no longer open. Pick another time.</span>';
+        fn.hidden=false;
       }
-      renderSlots(); updateBookBtn();
-    }).catch(function(){ $('#slotArea').innerHTML='<div class="loading">Could not load times.<button class="btn ghost" type="button" id="retry" style="max-width:220px">Try again</button></div>'; $('#retry').onclick=loadSlots });
+      if(!curDay || !data.some(function(d){return d.date===curDay})){
+        var firstOpen=data.filter(dayOpen)[0]; curDay=(firstOpen||data[0]).date;
+      }
+      renderSlots(); updateCta();
+    }).catch(function(){
+      $('#slotArea').innerHTML='<div class="empty">We couldn\'t load the open times.<div style="max-width:220px;margin:12px auto 0"><button class="btn ghost" type="button" id="retry">Try again</button></div></div>';
+      $('#retry').onclick=function(){ loadSlots(true) };
+    });
   }
   function renderSlots(){
-    var tabs='<div class="daytabs" role="tablist" aria-label="Choose a day">'+data.map(function(d){var f=fmt(d.date);
-      return '<button type="button" role="tab" class="day" aria-selected="'+(d.date===curDay)+'" data-day="'+d.date+'" aria-label="'+f.long+'"><b>'+f.w+'</b><span>'+f.n+'</span></button>'}).join('')+'</div>';
+    var days='<div class="days" role="group" aria-label="Choose a day">'+data.map(function(d){var f=fmt(d.date), open=dayOpen(d);
+      return '<button type="button" class="day'+(open?'':' none')+'" aria-pressed="'+(d.date===curDay)+'" data-day="'+d.date+'" aria-label="'+f.long+(open?'':', full')+'"><b>'+f.w+'</b><span>'+f.n+'</span></button>'}).join('')+'</div>';
     var day=data.filter(function(d){return d.date===curDay})[0];
-    var list='<div class="slots">'+day.slots.map(function(s){
+    var list='<div class="slots" role="group" aria-label="Choose a time on '+fmt(day.date).long+'">'+day.slots.map(function(s){
       var on=sel&&sel.date===day.date&&sel.hour===s.hour, full=s.type==='full';
-      var badge = full ? '<span class="badge full">Full</span>' : '';
-      return '<button type="button" class="slot" data-h="'+s.hour+'" aria-pressed="'+on+'" '+(full?'disabled':'')+'><span class="t">'+hl(s.hour)+'</span>'+badge+'</button>'
+      return '<button type="button" class="slot" data-h="'+s.hour+'" aria-pressed="'+on+'" '+(full?'disabled aria-label="'+hl(s.hour)+', full"':'')+'><span class="t">'+hl(s.hour)+'</span>'+(full?'<small>Full</small>':'')+'</button>'
     }).join('')+'</div>';
-    $('#slotArea').innerHTML=tabs+list;
+    if(!dayOpen(day)) list+='<p class="empty">This day is full. Try another day.</p>';
+    $('#slotArea').innerHTML=days+list;
+    var act=$('.day[aria-pressed=true]'); if(act&&act.scrollIntoView&&act.parentNode.scrollWidth>act.parentNode.clientWidth) act.parentNode.scrollLeft=Math.max(0,act.offsetLeft-16);
   }
   $('#slotArea').addEventListener('click',function(e){
     var d=e.target.closest('[data-day]'); if(d){ curDay=d.dataset.day; renderSlots(); return }
     var b=e.target.closest('.slot'); if(!b||b.disabled) return;
-    var sl=findSlot(curDay,+b.dataset.h); sel={date:curDay,hour:+b.dataset.h,type:sl.type}; renderSlots(); updateBookBtn();
+    sel={date:curDay,hour:+b.dataset.h}; showBookErr(''); renderSlots(); updateCta();
+    trackC('FormStep',{step:1});
   });
-  function updateBookBtn(){
-    if(step!==4) return;
-    if(!sel){ nextBtn.disabled=true; nextBtn.textContent='Choose a time'; note.textContent=''; return }
-    nextBtn.disabled=false; nextBtn.textContent=lead&&lead.id?'Book '+fmt(sel.date).short+', '+hl(sel.hour):'Continue';
-    note.textContent='';
+  function selLabel(){ return sel? fmt(sel.date).short+', '+hl(sel.hour) : '' }
+  function updateCta(){
+    if(store.get('w40done')){ bookBtn.disabled=false; bookBtn.textContent='View my booking'; stickyBtn.textContent='View my booking'; if(typeof syncSticky==='function') syncSticky(); return }
+    bookBtn.disabled=!sel; bookBtn.textContent= sel ? 'Book '+selLabel() : 'Pick a time above';
+    stickyBtn.textContent= sel ? 'Book '+selLabel() : 'Pick a time';
+    if(typeof syncSticky==='function') syncSticky();
   }
-  function submitBooking(){
-    if(!sel||!lead) return;
-    busy(true,'Booking…');
-    apiPost({action:'book',leadId:lead.id,date:sel.date,hour:sel.hour}).then(function(res){
-      if(!res.ok){ if(step!==4) show(4); fail(res.error||'That time just filled up. Please pick another.'); if(!res.already){ sel=null; data=null; loadSlots() } else busy(false); return }
-      track('Schedule'); var o={type:'Instant',date:res.date,hour:res.hour}; store.set('w40done',o); show(5); renderDone(o);
-    }).catch(function(){ if(step!==4) show(4); fail('Connection problem. Please try again.'); updateBookBtn() });
+  bookBtn.addEventListener('click',onCta);
+  stickyBtn.addEventListener('click',function(){ if(sel||store.get('w40done')) onCta(); else $('#book').scrollIntoView({behavior:'smooth',block:'start'}) });
+  function onCta(){ var d=store.get('w40done'); if(d) return openDone(d); if(sel){ mode='book'; openSheet() } }
+  $('#noTimeBtn').addEventListener('click',function(){ mode='callback'; openSheet() });
+
+  // sticky bar: only when the card's own button is off screen
+  var ctaInView=true;
+  function syncSticky(){ sticky.classList.toggle('hide', ctaInView || !(sel||store.get('w40done'))) }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ ctaInView=en[0].isIntersecting; syncSticky() },{threshold:0}).observe($('#cardCta'));
+  } else { ctaInView=false }
+
+  /* ---------- sheet ---------- */
+  var sheet=$('#sheet'), lastFocus=null;
+  function lock(on){ document.body.classList.toggle('locked',on) }
+  function openSheet(){
+    lastFocus=document.activeElement;
+    $('#contactForm').hidden=false; $('#doneArea').hidden=true; $('#pfoot').hidden=false; $('#formErr').hidden=true;
+    var cb=mode==='callback';
+    $('#chosen').hidden=cb;
+    $('#sheetLbl').textContent=cb?'We\'ll find a time':'Last step';
+    $('#sheetTitle').textContent=cb?'Leave your number':'Hold your spot';
+    $('#contactHelp').textContent=cb?'We\'ll message you on WhatsApp within 24 hours to find a time that works for you.':'We confirm your session on WhatsApp.';
+    $('#submitBtn').textContent=cb?'Send my number':'Book my free session';
+    $('#chosenWhen').textContent=selLabel();
+    if(lead){ if(!$('#name').value&&lead.name) $('#name').value=lead.name; if(!$('#phone').value&&lead.phone) $('#phone').value=lead.phone;
+      if(lead.email&&!$('#email').value){ $('#email').value=lead.email; showEmail() } }
+    sheet.classList.add('open'); sheet.setAttribute('aria-hidden','false'); lock(true);
+    trackC('OpenForm'); trackC('FormStep',{step:2});
+    setTimeout(function(){ var f=!$('#name').value?$('#name'):!$('#phone').value?$('#phone'):$('#submitBtn'); f.focus({preventScroll:true}) },320);
   }
-  $('#skipBtn').addEventListener('click',function(){ if(lead&&lead.id){ var o={type:'Callback'}; store.set('w40done',o); show(5); return renderDone(o) } mode='callback'; sel=null; show(0) });
+  function closeSheet(){
+    if(busy) return;
+    sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); lock(false);
+    if(lastFocus&&lastFocus.focus) lastFocus.focus({preventScroll:true});
+  }
+  $$('[data-close]',sheet).forEach(function(b){ b.addEventListener('click',closeSheet) });
+  $('#changeBtn').addEventListener('click',function(){ closeSheet(); $('#book').scrollIntoView({behavior:'smooth',block:'start'}) });
+  addEventListener('keydown',function(e){
+    if(!sheet.classList.contains('open')) return;
+    if(e.key==='Escape') return closeSheet();
+    if(e.key==='Tab'){ // keep focus inside the sheet
+      var f=$$('.panel button:not([hidden]):not([disabled]),.panel input:not([hidden]),.panel a[href]',sheet).filter(function(x){return x.offsetParent!==null});
+      if(!f.length) return; var a=f[0], z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){ e.preventDefault(); z.focus() } else if(!e.shiftKey&&document.activeElement===z){ e.preventDefault(); a.focus() }
+    }
+  });
+  function showEmail(){ $('#fEmail').hidden=false; $('#addEmail').hidden=true }
+  $('#addEmail').addEventListener('click',function(){ showEmail(); $('#email').focus() });
+  $('#name').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); $('#phone').focus() } });
+
+  /* ---------- validation ---------- */
+  var tried=false;
+  function check(){
+    var name=$('#name').value.trim(), phone=$('#phone').value.trim(), email=$('#email').value.trim();
+    var ok={name:name.length>=2, phone:phone.replace(/\D/g,'').length>=7, email:!email||/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)};
+    [['fName','name',ok.name],['fPhone','phone',ok.phone],['fEmail','email',ok.email]].forEach(function(x){
+      $('#'+x[0]).classList.toggle('bad',tried&&!x[2]); $('#'+x[1]).setAttribute('aria-invalid',tried&&!x[2]?'true':'false') });
+    return ok;
+  }
+  ['name','phone','email'].forEach(function(id){ $('#'+id).addEventListener('input',function(){ if(tried) check() }) });
+
+  function formErr(msg){ var e=$('#formErr'); e.innerHTML='<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>'+esc(msg)+'</span>'; e.hidden=false; $('#contactForm').scrollTop=0 }
+  function setBusy(on,label){ busy=on; var b=$('#submitBtn'); b.disabled=on; b.innerHTML=on?'<span class="spin" aria-hidden="true"></span>'+esc(label):esc(mode==='callback'?'Send my number':'Book my free session') }
+
+  /* ---------- submit: lead (name + phone + optional injury/email), then book the chosen time ---------- */
+  $('#contactForm').addEventListener('submit',function(e){
+    e.preventDefault(); if(busy) return;
+    tried=true; var ok=check();
+    if(!ok.name||!ok.phone||!ok.email){ ( !ok.name?$('#name'):!ok.phone?$('#phone'):$('#email') ).focus(); return }
+    if(mode==='book'&&!sel){ closeSheet(); return }
+    $('#formErr').hidden=true;
+    var name=$('#name').value.trim(), phone=$('#phone').value.trim(), email=$('#email').value.trim(), inj=$('#injuries').value.trim();
+    setBusy(true, mode==='callback'?'Sending…':'Booking…');
+    apiPost({action:'lead',name:name,phone:phone,email:email,source:source,injuries:inj}).then(function(res){
+      if(!res||!res.ok) throw new Error(res&&res.error||'Something went wrong. Please try again.');
+      lead={id:res.leadId,first:name.split(' ')[0],name:name,phone:phone,email:email}; store.set('w40lead',lead); track('Lead');
+      // same phone already booked: show that booking instead of a second one
+      if(res.booked){ var o={type:res.type==='Instant'?'Instant':'Request',date:res.date,label:res.time,already:true}; return finish(o) }
+      if(mode==='callback') return finish({type:'Callback'});
+      return apiPost({action:'book',leadId:res.leadId,date:sel.date,hour:sel.hour}).then(function(b){
+        if(!b||!b.ok){
+          if(b&&b.already){ setBusy(false); return formErr(b.error||'You already have a trial booked.') }
+          // time filled up: back to the times, details are kept
+          setBusy(false); closeSheet(); sel=null; showBookErr((b&&b.error)||'That time just filled up. Please pick another.');
+          $('#book').scrollIntoView({behavior:'smooth',block:'start'}); loadSlots(true); updateCta(); return;
+        }
+        track('Schedule');
+        finish({type:b.type==='Request'?'Request':'Instant',date:b.date,hour:b.hour});
+      });
+    }).catch(function(err){
+      setBusy(false);
+      formErr(err&&err.message&&err.message.length<160&&!/fetch|network|JSON/i.test(err.message)?err.message:'Connection problem. Please check your internet and try again.');
+    });
+  });
+  function finish(o){ setBusy(false); store.set('w40done',o); showBooked(o); openDone(o) }
 
   /* ---------- done ---------- */
   var TOWELS='<div class="towels" role="img" aria-label="A small 15 by 15 centimetre towel is too small. Bring a towel of at least 30 by 50 centimetres.">'+
@@ -598,60 +560,69 @@ var CONFIG = {
       '<circle cx="72" cy="22" r="17" fill="var(--mint-deep)"/><path d="M64 22.5l5.5 5.5 11-11" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></svg>'+
       '<figcaption><b class="yes">Bring this</b>30 x 50 cm</figcaption></figure></div>';
   var MAPS='https://www.google.com/maps/search/?api=1&query=Wellbe+Health+Center+Bsalim';
-  function inviteLink(o){
-    var u=location.origin+location.pathname+'?d='+o.date+'&h='+o.hour+'&by='+encodeURIComponent(lead&&lead.first||'')+'&utm_source=friend_invite';
-    return u;
+  function hourOf(o){ if(o.hour!==undefined&&o.hour!==null&&o.hour!=='') return +o.hour;
+    var m=String(o.label||'').match(/^(\d{1,2})/), x=m?+m[1]:7; if(/pm/i.test(o.label)&&x<12)x+=12; return x }
+  function inviteLink(o){ return location.origin+location.pathname+'?d='+o.date+'&h='+o.hour+'&by='+encodeURIComponent(lead&&lead.first||'')+'&utm_source=friend_invite' }
+  function showBooked(o){
+    var n=$('#bookedNote');
+    if(o.type==='Callback') n.innerHTML='<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Got it. We\'ll message you on WhatsApp within 24 hours.</span>';
+    else n.innerHTML='<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>You\'re booked for '+fmt(o.date).short+', '+hl(hourOf(o))+'.</span>';
+    n.hidden=false; updateCta();
   }
-  function renderDone(o){
+  function openDone(o){
     var nm=lead&&lead.first?lead.first:'', h='<div class="done">';
     var booked=(o.type==='Instant'||o.type==='Request');
     if(booked){
-      var hour = o.hour!==undefined ? o.hour : (function(t){var m=String(t||'').match(/^(\d{1,2})/);var x=m?+m[1]:7; if(/pm/i.test(t)&&x<12)x+=12; return x})(o.label);
-      o.hour=hour;
+      o.hour=hourOf(o);
       if(o.type==='Instant'){
-        h+='<div class="ring ok"><svg><use href="#i-check"/></svg></div><span class="status ok">Spot reserved</span>'+
+        h+='<div class="ring ok"><svg aria-hidden="true"><use href="#i-check"/></svg></div><span class="status ok">Spot reserved</span>'+
            '<h2>'+(o.already?'You\'re already booked':'You\'re in'+(nm?', '+esc(nm):'')+'!')+'</h2>'+
-           '<div class="when">'+fmt(o.date).long+'<br>'+hl(hour)+'</div>'+
+           '<div class="when">'+fmt(o.date).long+'<br>'+hl(o.hour)+'</div>'+
            '<p>We\'ll reach out to you within 24 hours on WhatsApp to welcome you.</p>';
       } else {
-        h+='<div class="ring wait"><svg><use href="#i-clock"/></svg></div><span class="status wait">Request sent</span>'+
+        h+='<div class="ring wait"><svg aria-hidden="true"><use href="#i-clock"/></svg></div><span class="status wait">Request sent</span>'+
            '<h2>'+(o.already?'Your request is in':'Request received'+(nm?', '+esc(nm):''))+'</h2>'+
-           '<div class="when">'+fmt(o.date).long+'<br>'+hl(hour)+'</div>'+
+           '<div class="when">'+fmt(o.date).long+'<br>'+hl(o.hour)+'</div>'+
            '<p>Your spot is held. We\'ll reach out to you within 24 hours on WhatsApp to confirm and welcome you.</p>';
       }
     } else {
-      h+='<div class="ring wait"><svg><use href="#i-clock"/></svg></div><h2>We\'ll reach out'+(nm?', '+esc(nm):'')+'</h2><p>We\'ll message you on WhatsApp within 24 hours to find a time that works for you.</p>';
+      h+='<div class="ring wait"><svg aria-hidden="true"><use href="#i-clock"/></svg></div><h2>We\'ll reach out'+(nm?', '+esc(nm):'')+'</h2><p>We\'ll message you on WhatsApp within 24 hours to find a time that works for you.</p>';
     }
-    // invite a friend to the same session
     if(booked){
       var link=inviteLink(o), msg='I booked a free training session at Wellbe on '+fmt(o.date).short+' at '+hl(o.hour)+'. Join me, it\'s free: '+link;
-      h+='<div class="panelbox"><h3>Train with a friend</h3><p style="font-size:15.5px">Send her this link. She fills out the same form and lands on your session.</p>'+
-         '<div class="share"><a class="btn wa" href="https://wa.me/?text='+encodeURIComponent(msg)+'" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>Invite on WhatsApp</a>'+
+      h+='<div class="panelbox"><h3>Train with a friend</h3><p>Send her this link. She fills out the same form and lands on your session.</p>'+
+         '<div class="share"><a class="btn wa" href="https://wa.me/?text='+encodeURIComponent(msg)+'" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Invite on WhatsApp</a>'+
          '<button class="btn ghost" type="button" id="copyLink">Copy invite link</button><div class="copied" id="copied" aria-live="polite"></div></div></div>';
     }
     h+='<div class="panelbox"><h3>Bring with you</h3><ul>'+
-       ['Comfortable clothes and training shoes','A water bottle','A towel, at least 30 x 50 cm'].map(function(t){return '<li><svg><use href="#i-check"/></svg>'+t+'</li>'}).join('')+'</ul>'+TOWELS+'</div>'+
-       '<div class="panelbox"><h3>Find us</h3><p style="font-size:15.5px;margin-bottom:12px">Wellbe Health Center, Bsalim</p>'+
-       '<a class="btn ghost" href="'+MAPS+'" target="_blank" rel="noopener"><svg class="icon"><use href="#i-pin"/></svg>Open in Google Maps</a></div>'+
-       '<div class="offerbox offer"><div class="big">Your first session is <b>free</b></div><p>Ask about our October Special packages and save up to $60.</p><span class="tag"><i></i>Limited time offer</span></div>'+
+       ['Comfortable clothes and training shoes','A water bottle','A towel, at least 30 x 50 cm'].map(function(t){return '<li><svg aria-hidden="true"><use href="#i-check"/></svg>'+t+'</li>'}).join('')+'</ul>'+TOWELS+'</div>'+
+       '<div class="panelbox"><h3>Find us</h3><p style="margin-bottom:12px">Wellbe Health Center, Bsalim</p>'+
+       '<a class="btn ghost" href="'+MAPS+'" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Open in Google Maps</a></div>'+
+       '<div class="offerbox"><div class="big">Your first session is <b>free</b></div><p>Ask about our October Special packages and save up to $60.</p></div>'+
        '<p style="margin-top:16px;font-size:15px">Questions? <a href="https://wa.me/96176511048" target="_blank" rel="noopener" style="color:var(--mint-deep);font-weight:700">WhatsApp us</a></p>'+
-       '<button class="btn ghost" type="button" id="doneClose" style="margin-top:12px">Back to page</button></div>';
-    $('#doneArea').innerHTML=h; $('#doneClose').onclick=closeFlow;
+       '<button class="btn ghost" type="button" id="doneClose" style="margin-top:12px">Done</button></div>';
+    var da=$('#doneArea'); da.innerHTML=h; da.hidden=false; da.scrollTop=0;
+    $('#contactForm').hidden=true; $('#pfoot').hidden=true; $('#sheetLbl').textContent='All done';
+    if(!sheet.classList.contains('open')){ lastFocus=document.activeElement; sheet.classList.add('open'); sheet.setAttribute('aria-hidden','false'); lock(true) }
+    $('#doneClose').onclick=closeSheet;
     var cp=$('#copyLink'); if(cp) cp.onclick=function(){ var l=inviteLink(o);
       var ok=function(){ $('#copied').textContent='Link copied. Paste it to your friend.' };
       if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(l).then(ok).catch(function(){ $('#copied').textContent=l });
       else $('#copied').textContent=l; };
+    setTimeout(function(){ var t=$('#doneArea h2'); if(t){ t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}) } },320);
   }
 
-  /* friend link: open the flow straight away */
-  if(invite && !store.get('w40done')) setTimeout(openFlow,400);
+  /* ---------- start ---------- */
+  var prior=store.get('w40done'); if(prior) showBooked(prior);
+  loadSlots(false);
+  if(invite && !prior) setTimeout(function(){ $('#book').scrollIntoView({behavior:'smooth',block:'start'}) },300);
 
-  /* ---------- demo mode ---------- */
+  /* ---------- demo mode (API_URL empty): fake slots, nothing is saved ---------- */
   function demoSlots(){ return new Promise(function(res){ setTimeout(function(){
     var days=[], t=new Date(); t.setHours(12);
     for(var i=1;days.length<5;i++){ var d=new Date(t.getTime()+i*864e5), w=d.getDay(); if(w===0||w===6) continue;
       var ymd=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2), k=days.length;
-      var pat=[[1,0,3,0],[0,2,0,0],[2,0,0,1],[0,0,0,0],[3,1,0,0]][k];
+      var pat=[[1,0,3,0],[0,2,0,0],[2,0,0,1],[3,3,3,3],[3,1,0,0]][k];
       days.push({date:ymd,slots:[7,8,9,10].map(function(h,j){return {hour:h,type:pat[j]>=3?'full':'instant'}})}) }
     res({ok:true,days:days,cap:3}) },450) }) }
   function demoPost(b){ return new Promise(function(res){ setTimeout(function(){
