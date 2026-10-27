@@ -25,10 +25,11 @@ Use this file to compare results between versions. Only measured numbers go in t
 
 ## v2: time first booking (file: `index.html`)
 
-- Live date: ____ (the date this version is merged to main and goes live. Fill in on that day.)
+- Live date: 27 Oct 2026, 20:30 Beirut time (commit 155a1f2 pushed to main; new page confirmed loading on GitHub Pages the same evening).
 - Flow: pick day and time on the page > name + WhatsApp number (+ optional injury, optional email) > booked.
 - Removed questions: "Have you trained before?" and "What do you want most?". Injury is now one optional line. Email is optional, behind "+ Add email".
 - Backend, sheet columns and booking rules are unchanged.
+- 28 Oct 2026: hero photo removed; the headline now sits on a plain dark background (#20282b). This happened in the first hours of v2, so the whole v2 period uses this design.
 - Calendar check on 27 Oct 2026, 20:20 Beirut: the 18 time slots the live backend offered for 28 Oct to 3 Nov matched Joe's sessions and Pending trials in the Operations sheet, slot by slot (0 mismatches). The page displayed them with the right days and times in Beirut, Los Angeles and Auckland time zones, and sent the chosen date and hour unchanged.
 - Meta Pixel `Lead` now fires after a time is picked and the contact details are sent. This is a different moment than in v1, so Meta lead counts are not directly comparable between versions. Compare booked trials per landing page view instead.
 
